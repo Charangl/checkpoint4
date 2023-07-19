@@ -62,7 +62,7 @@ CREATE TABLE `user` (
   `lastname` varchar(100) NOT NULL,
   `pseudo` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `hashedPassword` varchar(255) NOT NULL,
   `role` enum('admin', 'user') DEFAULT 'admin',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -74,7 +74,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Sabine', 'Lemoine', 'Seiren', 's.malecot@gmail.com', 'Itsuko', 'admin');
+INSERT INTO `user` VALUES (1,'Sabine', 'Lemoine', 'Seiren', 's.malecot@gmail.com', '$argon2id$v=19$m=65536,t=5,p=1$n77TeVPaz3dq09Io7msmhQ$6TeOpAIxevxju094fmPV6qaC6BOrqBhSqhNks/4Ly/I', 'admin');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 

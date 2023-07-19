@@ -1,13 +1,21 @@
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import PrivateRoutes from "./components/PrivateRoutes";
 
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
+    <main className="App">
       <Home />
-      <p>coucou</p>
-    </div>
+
+      <Routes>
+        <Route
+          path="/"
+          element={<PrivateRoutes authorizedRoles={["admin", "user"]} />}
+        />
+      </Routes>
+    </main>
   );
 }
 
