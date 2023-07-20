@@ -1,21 +1,25 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+
+import Login from "./components/Login";
 import PrivateRoutes from "./components/PrivateRoutes";
+// import { UserContextProvider } from "./contexts/UserContext";
 
 import "./App.css";
 
 function App() {
   return (
+    // <UserContextProvider>
     <main className="App">
-      <Home />
-
       <Routes>
+        <Route path="/login" element={<Login />} />
+
         <Route
           path="/"
           element={<PrivateRoutes authorizedRoles={["admin", "user"]} />}
         />
       </Routes>
     </main>
+    // </UserContextProvider>
   );
 }
 

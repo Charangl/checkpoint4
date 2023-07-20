@@ -1,36 +1,14 @@
-import Counter from "../components/Counter";
-import logo from "../assets/logo.svg";
+import { Stack } from "@chakra-ui/react";
+import React from "react";
+import Login from "../components/Login";
 
 export default function Home() {
   return (
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>Hello Vite + React !</p>
-
-      <Counter />
-
-      <p>
-        Edit <code>App.jsx</code> and save to test HMR updates.
-      </p>
-      <p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        {" | "}
-        <a
-          className="App-link"
-          href="https://vitejs.dev/guide/features.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Vite Docs
-        </a>
-      </p>
-    </header>
+    <Stack
+      p={{ base: "1rem, 1rem, 1rem", md: "3rem 6rem 0" }}
+      bgGradient="linear-gradient(#F6FAFD 0%, #FFFFFF 19.4%)"
+    >
+      <Login />
+    </Stack>
   );
 }

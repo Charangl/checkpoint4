@@ -6,6 +6,7 @@ const hashingOptions = {
   memoryCost: 2 ** 16,
   timeCost: 5,
   parallelism: 1,
+  hashLength: 32,
 };
 
 const browse = (req, res) => {
@@ -99,14 +100,26 @@ const login = (req, res, next) => {
     .then(([users]) => {
       if (users.length === 0) {
         res.sendStatus(404);
-      } else if (!argon2.verifySync(users[0].hashedPassword, password)) {
-        res.sendStatus(404);
       } else {
-        const user = { ...users[0] };
-        delete user.hashedPassword;
+        const { hashedPassword } = users[0];
 
-        req.body = user;
-        next();
+        argon2
+          .verify(hashedPassword, password)
+          .then((match) => {
+            if (!match) {
+              res.sendStatus(404);
+            } else {
+              const user = { ...users[0] };
+              delete user.hashedPassword;
+
+              req.body = user;
+              next();
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+            res.sendStatus(500);
+          });
       }
     })
     .catch((err) => {

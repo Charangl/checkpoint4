@@ -7,8 +7,8 @@ class TextManager extends AbstractManager {
 
   insert(text) {
     return this.database.query(
-      `insert into ${this.table} (title, comment, article, user_id ) values (?,?,?,?)`,
-      [text.title, text.comment, text.article, text.user_id]
+      `insert into ${this.table} (title, comment, article, image, user_id ) values (?,?,?,?,?)`,
+      [text.title, text.comment, text.article, text.image, text.user_id]
     );
   }
 
@@ -21,14 +21,14 @@ class TextManager extends AbstractManager {
 
   find(id) {
     return this.database.query(
-      `select id, title, comment, article, user_id from  ${this.table} where id = ?`,
+      `select id, title, comment, article, image, user_id from  ${this.table} where id = ?`,
       [id]
     );
   }
 
   findAll() {
     return this.database.query(
-      `select id, title, comment, article, user_id from  ${this.table}`
+      `select id, title, comment, article, image, user_id from  ${this.table}`
     );
   }
 }

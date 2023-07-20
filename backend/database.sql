@@ -90,6 +90,7 @@ CREATE TABLE `text` (
   `title` varchar(255) NOT NULL,
   `comment` text NOT NULL,
   `article` longtext NOT NULL,
+  `image` varchar(255) NOT NULL,
   `user_id` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -101,7 +102,7 @@ CREATE TABLE `text` (
 
 LOCK TABLES `text` WRITE;
 /*!40000 ALTER TABLE `text` DISABLE KEYS */;
-INSERT INTO `text` VALUES (1,'Coupe spéciale été', '...', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum blandit diam in tempus semper. Nullam at rutrum tortor. Fusce tempor suscipit accumsan.', 1);
+INSERT INTO `text` VALUES (1,'Coupe spéciale été', '...', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum blandit diam in tempus semper. Nullam at rutrum tortor. Fusce tempor suscipit accumsan.','...', 1);
 /*!40000 ALTER TABLE `text` ENABLE KEYS */;
 UNLOCK TABLES;
 
