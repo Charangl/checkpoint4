@@ -45,12 +45,12 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-const isAdminOrUser = (req, res, next) => {
-  if (req.body.role === "admin" || req.body.role === "user") {
+const isAdmin = (req, res, next) => {
+  if (req.body.role === "admin") {
     next();
   } else {
     res.sendStatus(401);
   }
 };
 
-module.exports = { createToken, verifyToken, isAdminOrUser };
+module.exports = { createToken, verifyToken, isAdmin };

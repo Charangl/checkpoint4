@@ -44,7 +44,7 @@ CREATE TABLE `rabbit` (
 
 LOCK TABLES `rabbit` WRITE;
 /*!40000 ALTER TABLE `rabbit` DISABLE KEYS */;
-INSERT INTO `rabbit` VALUES (1,'Ekor','Mâle','07/11/2018', 'Fauve', '...', '1035g', 'reproducteur', '1', 'https://i.imgur.com/feo6ZlZ.jpg', '...', '10/12/2022', 'Tatoué 8EL-0911',1);
+INSERT INTO `rabbit` VALUES (1,'Ekor','Mâle','07/11/2018', 'Fauve', '...', '1035g', 'reproducteur', '1', '1689866791223-rabbit-338839789_1214924052548339_191260099021626376_n.jpg', '...', '10/12/2022', 'Tatoué 8EL-0911',1);
 /*!40000 ALTER TABLE `rabbit` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,12 +58,12 @@ DROP TABLE IF EXISTS `user`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(100) NOT NULL,
-  `lastname` varchar(100) NOT NULL,
+  `firstname` varchar(100) DEFAULT NULL,
+  `lastname` varchar(100) DEFAULT NULL,
   `pseudo` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `hashedPassword` varchar(255) NOT NULL,
-  `role` enum('admin', 'user') DEFAULT 'admin',
+  `role` enum('admin', 'user') DEFAULT 'user',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -79,30 +79,31 @@ INSERT INTO `user` VALUES (1,'Sabine', 'Lemoine', 'Seiren', 's.malecot@gmail.com
 UNLOCK TABLES;
 
 --
--- Table structure for table `text`
+-- Table structure for table `writing`
 --
 
-DROP TABLE IF EXISTS `text`;
+DROP TABLE IF EXISTS `writing`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `text` (
+CREATE TABLE `writing` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `comment` text NOT NULL,
   `article` longtext NOT NULL,
+  `image` varchar(255) NOT NULL,
   `user_id` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `text`
+-- Dumping data for table `writing`
 --
 
-LOCK TABLES `text` WRITE;
-/*!40000 ALTER TABLE `text` DISABLE KEYS */;
-INSERT INTO `text` VALUES (1,'Coupe spéciale été', '...', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum blandit diam in tempus semper. Nullam at rutrum tortor. Fusce tempor suscipit accumsan.', 1);
-/*!40000 ALTER TABLE `text` ENABLE KEYS */;
+LOCK TABLES `writing` WRITE;
+/*!40000 ALTER TABLE `writing` DISABLE KEYS */;
+INSERT INTO `writing` VALUES (1,'Coupe spéciale été', '...', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum blandit diam in tempus semper. Nullam at rutrum tortor. Fusce tempor suscipit accumsan.','article1.jpg', 1);
+/*!40000 ALTER TABLE `writing` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

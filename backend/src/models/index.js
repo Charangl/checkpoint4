@@ -44,10 +44,10 @@ const BreedingManager = require("./BreedingManager");
 models.breeding = new BreedingManager();
 models.breeding.setDatabase(pool);
 
-const TextManager = require("./TextManager");
+const WritingManager = require("./WritingManager");
 
-models.text = new TextManager();
-models.text.setDatabase(pool);
+models.writing = new WritingManager();
+models.writing.setDatabase(pool);
 
 const FavoriteManager = require("./FavoriteManager");
 
