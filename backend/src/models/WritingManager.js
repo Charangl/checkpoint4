@@ -1,21 +1,27 @@
 const AbstractManager = require("./AbstractManager");
 
-class TextManager extends AbstractManager {
+class WritingManager extends AbstractManager {
   constructor() {
-    super({ table: "text" });
+    super({ table: "writing" });
   }
 
-  insert(text) {
+  insert(writing) {
     return this.database.query(
       `insert into ${this.table} (title, comment, article, image, user_id ) values (?,?,?,?,?)`,
-      [text.title, text.comment, text.article, text.image, text.user_id]
+      [
+        writing.title,
+        writing.comment,
+        writing.article,
+        writing.image,
+        writing.user_id,
+      ]
     );
   }
 
-  update(text) {
+  update(writing) {
     return this.database.query(`update ${this.table} set ? where id = ?`, [
-      text,
-      text.id,
+      writing,
+      writing.id,
     ]);
   }
 
@@ -33,4 +39,4 @@ class TextManager extends AbstractManager {
   }
 }
 
-module.exports = TextManager;
+module.exports = WritingManager;

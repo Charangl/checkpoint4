@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.text
+  models.writing
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,7 +13,7 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.text
+  models.writing
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const text = req.body;
+  const writing = req.body;
 
   // TODO validations (length, format...)
 
-  text.id = parseInt(req.params.id, 10);
+  writing.id = parseInt(req.params.id, 10);
 
-  models.text
-    .update(text)
+  models.writing
+    .update(writing)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -51,12 +51,12 @@ const edit = (req, res) => {
 };
 
 const add = (req, res, next) => {
-  const text = req.body;
+  const writing = req.body;
 
   // TODO validations (length, format...)
 
-  models.text
-    .insert(text)
+  models.writing
+    .insert(writing)
     .then(([result]) => {
       const insertedId = result.insertId;
       res.status(201).json({ id: insertedId });
@@ -69,7 +69,7 @@ const add = (req, res, next) => {
 };
 
 const destroy = (req, res) => {
-  models.text
+  models.writing
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {

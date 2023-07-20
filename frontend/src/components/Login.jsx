@@ -1,19 +1,14 @@
-import PropTypes from "prop-types";
 import { Box, Input, Text, Button, useToast, Center } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 
-export default function Login({ setIsRegistered }) {
-  const { dispatch } = useUserContext();
+export default function Login() {
+  const [dispatch] = useUserContext();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const toast = useToast();
-
-  const handleRegister = () => {
-    setIsRegistered(false);
-  };
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -27,7 +22,7 @@ export default function Login({ setIsRegistered }) {
     e.preventDefault();
 
     if (!email || !password) {
-      // ... gestion du toast ...
+      alert("You must provide an email and a password!!!!");
     } else {
       fetch(`${import.meta.env.VITE_BACKEND_URL}/api/users/login`, {
         method: "POST",
@@ -40,12 +35,7 @@ export default function Login({ setIsRegistered }) {
           password,
         }),
       })
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error("La connexion a échoué.");
-          }
-          return res.json();
-        })
+        .then((res) => res.json())
         .then((data) => {
           console.warn(data);
           dispatch({ type: "SET_USER", payload: data });
@@ -58,12 +48,10 @@ export default function Login({ setIsRegistered }) {
           });
           navigate(`/`);
         })
-        .catch((err) => {
-          console.error(err);
+        .catch(() => {
           toast({
             title: "Erreur.",
-            description:
-              err.message || "Impossible de se connecter, veuillez réessayer.",
+            description: "Impossible de se connecter, veuillez réessayer.",
             status: "error",
             duration: 3000,
             isClosable: true,
@@ -81,25 +69,15 @@ export default function Login({ setIsRegistered }) {
           maxW={{ base: "20rem", md: "35rem" }}
           zIndex={{ base: "2" }}
         >
-          <Center mb="1rem">
-            <Text fontSize="xs" mt="0.5rem">
-              Vous n'avez pas encore de compte ?&nbsp;
-            </Text>
-            <Text
-              fontSize="xs"
-              color="brown.200"
-              as="b"
-              mt="0.5rem"
-              _hover={{ textDecoration: "underline" }}
-              cursor="pointer"
-              onClick={handleRegister}
-            >
-              S'inscrire
-            </Text>
-          </Center>
           <Box mt={{ base: "1rem", md: "7rem" }}>
             <Text as="b" fontSize={{ base: "18px", md: "2xl" }}>
               Bienvenue !
+            </Text>
+          </Box>
+          <Box mt={3}>
+            <Text>
+              Vous n'avez pas de compte ?{" "}
+              <NavLink to="/signIn">S'enregistrer</NavLink>
             </Text>
           </Box>
           <Input
@@ -177,7 +155,3 @@ export default function Login({ setIsRegistered }) {
     </form>
   );
 }
-
-Login.propTypes = {
-  setIsRegistered: PropTypes.func.isRequired,
-};
