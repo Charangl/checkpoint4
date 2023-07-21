@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.item
+  models.favorite
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,13 +13,13 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.item
+  models.favorite
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.sendStatus(404);
       } else {
-        res.send(rows[0]);
+        res.status(req.method === "POST" ? 201 : 200).send(rows[0]);
       }
     })
     .catch((err) => {
@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const item = req.body;
+  const favorite = req.body;
 
   // TODO validations (length, format...)
 
-  item.id = parseInt(req.params.id, 10);
+  favorite.id = parseInt(req.params.id, 10);
 
-  models.item
-    .update(item)
+  models.favorite
+    .update(favorite)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -50,15 +50,17 @@ const edit = (req, res) => {
     });
 };
 
-const add = (req, res) => {
-  const item = req.body;
+const add = (req, res, next) => {
+  const favorite = req.body;
 
   // TODO validations (length, format...)
 
-  models.item
-    .insert(item)
+  models.favorite
+    .insert(favorite)
     .then(([result]) => {
-      res.location(`/items/${result.insertId}`).sendStatus(201);
+      const insertedId = result.insertId;
+      res.status(201).json({ id: insertedId });
+      next();
     })
     .catch((err) => {
       console.error(err);
@@ -67,7 +69,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.item
+  models.favorite
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {

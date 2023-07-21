@@ -1,4 +1,31 @@
-body {
+.App {
+  max-width: 100vw;
+  overflow: hidden;
+  display: flex;
+
+  align-items: center;
+}
+
+/* styles.css (ou n'importe quel autre fichier CSS que vous utilisez) */
+.heading-with-traits::before,
+.heading-with-traits::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 0.5px;
+  background: black;
+  width: 35%;
+}
+
+.heading-with-traits::before {
+  left: -5px;
+}
+
+.heading-with-traits::after {
+  right: -5px;
+}
+
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -53,4 +80,4 @@ code {
 
 button {
   font-size: calc(10px + 2vmin);
-}
+} */
