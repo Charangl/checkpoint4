@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import RabbitList from "./pages/RabbitList";
 import RabbitDetails from "./pages/RabbitDetails";
 import WritingList from "./pages/WritingList";
+// import WritingDetails from "./pages/WritingDetails";
 import PrivateRoutes from "./components/PrivateRoutes";
 import Gestion from "./pages/Gestion";
 // import { UserContextProvider } from "./contexts/UserContext";
@@ -46,7 +47,8 @@ function App() {
               <Route path="/intro" element={<Intro />} />
               <Route path="/rabbitList" element={<RabbitList />} />
               <Route path="/rabbits/:id" element={<RabbitDetails />} />
-              <Route path="/articleList" element={<WritingList />} />
+              <Route path="/writingList" element={<WritingList />} />
+              {/* <Route path="/writings/:id" element={<WritingDetails />} /> */}
               <Route path="/name" element={<Name />} />
               <Route
                 path="/"

@@ -24,4 +24,27 @@ const uploadRabbitPhoto = (req, res, next) => {
   });
 };
 
-module.exports = { uploadRabbitPhoto };
+const storageBis = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "../../public/assets/images"));
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-article-${file.originalname}`);
+  },
+});
+
+const uploadBis = multer({ storage: storageBis });
+
+const uploadArticleImage = (req, res, next) => {
+  uploadBis.single("image")(req, res, (err) => {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      req.body.image = req.file.filename;
+      next();
+    }
+  });
+};
+
+module.exports = { uploadRabbitPhoto, uploadArticleImage };

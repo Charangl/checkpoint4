@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 
 export default function Login() {
-  const [dispatch] = useUserContext();
+  const dispatch = useUserContext()[1];
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +22,7 @@ export default function Login() {
     e.preventDefault();
 
     if (!email || !password) {
-      alert("You must provide an email and a password!!!!");
+      console.info("Vous devez remplir tous les champs !");
     } else {
       fetch(`${import.meta.env.VITE_BACKEND_URL}/api/users/login`, {
         method: "POST",

@@ -116,7 +116,6 @@ export default function CreateRabbit() {
         });
     }
   };
-
   return (
     <Box>
       <Flex
@@ -445,7 +444,7 @@ export default function CreateRabbit() {
                 </label>
               </Box>
             </SimpleGrid>
-            <Button type="submit">Create the rabbit</Button>
+            <Button type="submit">Créer le lapin</Button>
           </form>
         </Box>
       </Flex>

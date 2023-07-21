@@ -10,7 +10,7 @@ export default function Intro() {
         boxShadow="md"
         p="2rem"
         flexDir="column"
-        w="85%"
+        w="78.5%"
         mt="5rem"
         mx="auto"
       >
@@ -35,7 +35,7 @@ export default function Intro() {
               content: '""',
               position: "absolute",
               top: "50%",
-              width: "79%",
+              width: "77%",
               height: "0.5px",
               background: "black",
               right: "-10px",
@@ -71,10 +71,10 @@ export default function Intro() {
               content: '""',
               position: "absolute",
               top: "50%",
-              width: "7%",
+              width: "6%",
               height: "1px",
               background: "black",
-              right: "-10px", // Adjust the spacing as needed
+              right: "-10px",
             }}
           >
             <Text ml="82.5%">à propos</Text>
@@ -107,7 +107,7 @@ export default function Intro() {
               content: '""',
               position: "absolute",
               top: "50%",
-              width: "72.5%",
+              width: "69.5%",
               height: "1px",
               background: "black",
               right: "-10px", // Adjust the spacing as needed

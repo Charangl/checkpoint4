@@ -99,10 +99,10 @@ export default function Writing({ id, title, article, image }) {
             alt={title}
             borderRadius="lg"
             h="auto"
-            w="30%" // Modifier la largeur de l'image à 50%
+            w="35%"
             objectFit="cover"
             float="left"
-            mr="1rem" // Ajouter une marge à droite de l'image
+            mr="2rem"
           />
           <p>{article}</p>
         </Flex>
