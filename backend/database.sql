@@ -88,7 +88,7 @@ DROP TABLE IF EXISTS `writing`;
 CREATE TABLE `writing` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
-  `comment` text NOT NULL,
+  `comment` text DEFAULT NULL,
   `article` longtext NOT NULL,
   `image` varchar(255) NOT NULL,
   `user_id` int DEFAULT NULL,

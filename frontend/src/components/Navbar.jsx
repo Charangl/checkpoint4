@@ -12,12 +12,14 @@ const Navbar = () => {
   const [{ user }, dispatch] = useUserContext();
   const handleLogout = () => {
     dispatch({ type: "RESET_USER" });
-    navigate("/"); // Rediriger vers la page de connexion après la déconnexion
+    navigate("/");
   };
 
   return (
     <Flex
-      bg="#D4CDCD"
+      boxShadow="md"
+      borderRight="3px double #9a7531 "
+      bgGradient="linear(to-t, #c1cbc0 , #D4CDCD 50%)"
       h="100vh"
       w="56"
       fixed
@@ -39,7 +41,7 @@ const Navbar = () => {
         </NavLink>
       </Box>
       <Box textAlign="left">
-        <NavLink title="articles" to="/articleList">
+        <NavLink title="articles" to="/writingList">
           <Button variant="sidebar">
             <Text
               fontFamily="Playfair Display"
