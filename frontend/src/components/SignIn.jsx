@@ -157,6 +157,7 @@ export default function SignIn() {
           />
 
           <Button
+            bg="#50908f"
             width="100%"
             type="submit"
             onClick={() => {

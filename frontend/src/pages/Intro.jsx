@@ -65,7 +65,7 @@ export default function Intro() {
               width: "82%",
               height: "1px",
               background: "black",
-              left: "-10px", // Adjust the spacing as needed
+              left: "-10px",
             }}
             _after={{
               content: '""',
@@ -83,7 +83,16 @@ export default function Intro() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
             porro facilis ad recusandae tempora placeat quae quisquam minus
             nostrum officia. Voluptas autem fuga pariatur cumque minima sunt
-            ratione quam qui?
+            ratione quam qui? Donec blandit eleifend dui. Aenean varius, tellus
+            non condimentum gravida, turpis tortor hendrerit mauris, a gravida
+            dolor quam fermentum augue. Vivamus vehicula faucibus sollicitudin.
+            Vivamus ut dapibus metus. Nunc posuere augue at rutrum fringilla.
+            Sed nec venenatis augue. Phasellus mollis lacus vel nibh semper
+            vestibulum. Donec urna nisl, gravida in mauris id, ultrices molestie
+            massa. Suspendisse dictum, augue at laoreet bibendum, nisl elit
+            dictum mauris, vel malesuada orci dui vitae magna. Curabitur et
+            imperdiet nisl, ac vestibulum ligula. Suspendisse vel ligula augue.
+            Pellentesque suscipit eros nec pulvinar porta.
           </Text>
         </Box>
         <Box p="1rem">

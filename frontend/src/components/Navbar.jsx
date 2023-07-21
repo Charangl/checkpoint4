@@ -18,6 +18,7 @@ const Navbar = () => {
   return (
     <Flex
       boxShadow="md"
+      borderRight="3px double #9a7531 "
       bgGradient="linear(to-t, #c1cbc0 , #D4CDCD 50%)"
       h="100vh"
       w="56"

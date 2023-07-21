@@ -133,6 +133,7 @@ export default function Login() {
           />
 
           <Button
+            bg="#50908f"
             width="100%"
             type="submit"
             onClick={() => {
