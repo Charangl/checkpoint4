@@ -7,7 +7,8 @@ import Home from "./pages/Home";
 import Intro from "./pages/Intro";
 import Name from "./components/Name";
 import Navbar from "./components/Navbar";
-import RabbitList from "./pages/RabbitList";
+import RabbitListRepro from "./pages/RabbitListRepro";
+import RabbitListBaby from "./pages/RabbitListBaby";
 import RabbitDetails from "./pages/RabbitDetails";
 import WritingList from "./pages/WritingList";
 // import WritingDetails from "./pages/WritingDetails";
@@ -21,7 +22,10 @@ function App() {
   return (
     // <UserContextProvider>
     <main>
-      <Grid templateColumns="15rem 1fr" minH="100vh">
+      <Grid
+        templateColumns={{ base: "0rem 1fr", md: "15rem 1fr" }}
+        minH={{ md: "100vh" }}
+      >
         <GridItem>
           <div
             style={{
@@ -45,7 +49,8 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signIn" element={<SignIn />} />
               <Route path="/intro" element={<Intro />} />
-              <Route path="/rabbitList" element={<RabbitList />} />
+              <Route path="/repro" element={<RabbitListRepro />} />
+              <Route path="/baby" element={<RabbitListBaby />} />
               <Route path="/rabbits/:id" element={<RabbitDetails />} />
               <Route path="/writingList" element={<WritingList />} />
               {/* <Route path="/writings/:id" element={<WritingDetails />} /> */}

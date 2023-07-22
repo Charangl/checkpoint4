@@ -11,12 +11,12 @@ export default function Intro() {
         p="2rem"
         flexDir="column"
         w="78.5%"
-        mt="5rem"
+        mt={{ base: "2rem", md: "5rem" }}
         mx="auto"
       >
         <Box p="1rem">
           <Heading
-            fontSize="1.2rem"
+            fontSize="1.1rem"
             mb="2rem"
             fontFamily="Playfair Display"
             textTransform="uppercase"
@@ -26,10 +26,10 @@ export default function Intro() {
               content: '""',
               position: "absolute",
               top: "50%",
-              width: "7%",
+              width: "4rem",
               height: "0.5px",
               background: "black",
-              left: "-10px",
+              left: "-1rem",
             }}
             _after={{
               content: '""',
@@ -38,10 +38,12 @@ export default function Intro() {
               width: "77%",
               height: "0.5px",
               background: "black",
-              right: "-10px",
+              right: "-1rem",
             }}
           >
-            <Text ml="7%">Qui suis-je ?</Text>
+            <Text ml="4rem" w="30%">
+              Qui suis-je ?
+            </Text>
           </Heading>
           <Text>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
@@ -52,7 +54,7 @@ export default function Intro() {
         </Box>
         <Box p="1rem">
           <Heading
-            fontSize="1.2rem"
+            fontSize="1.1rem"
             mb="2rem"
             fontFamily="Playfair Display"
             textTransform="uppercase"
@@ -65,7 +67,7 @@ export default function Intro() {
               width: "82%",
               height: "1px",
               background: "black",
-              left: "-10px",
+              left: "-1rem",
             }}
             _after={{
               content: '""',
@@ -74,10 +76,12 @@ export default function Intro() {
               width: "6%",
               height: "1px",
               background: "black",
-              right: "-10px",
+              right: "-1rem",
             }}
           >
-            <Text ml="82.5%">à propos</Text>
+            <Text ml="82.3%" w="30%">
+              à propos
+            </Text>
           </Heading>
           <Text>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
@@ -97,7 +101,7 @@ export default function Intro() {
         </Box>
         <Box p="1rem">
           <Heading
-            fontSize="1.2rem"
+            fontSize="1.1rem"
             mb="2rem"
             fontFamily="Playfair Display"
             textTransform="uppercase"
@@ -107,10 +111,10 @@ export default function Intro() {
               content: '""',
               position: "absolute",
               top: "50%",
-              width: "7%",
+              width: "4rem",
               height: "1px",
               background: "black",
-              left: "-10px", // Adjust the spacing as needed
+              left: "-1rem", // Adjust the spacing as needed
             }}
             _after={{
               content: '""',
@@ -119,10 +123,12 @@ export default function Intro() {
               width: "69.5%",
               height: "1px",
               background: "black",
-              right: "-10px", // Adjust the spacing as needed
+              right: "-1rem", // Adjust the spacing as needed
             }}
           >
-            <Text ml="7%">Mes engagements</Text>
+            <Text ml="4rem" w="40%">
+              Mes engagements
+            </Text>
           </Heading>
           <Text>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis

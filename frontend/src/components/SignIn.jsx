@@ -26,7 +26,14 @@ export default function SignIn() {
     e.preventDefault();
 
     if (!pseudo || !email || !password) {
-      alert("Vous devez remplir tous les champs !");
+      toast({
+        title: "Champs",
+        description: "Vous devez remplir tous les champs !",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+        position: "bottom-right",
+      });
     } else {
       fetch(`${import.meta.env.VITE_BACKEND_URL}/api/users/`, {
         method: "POST",
