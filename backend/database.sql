@@ -22,13 +22,15 @@ DROP TABLE IF EXISTS `rabbit`;
 CREATE TABLE `rabbit` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-  `sexe` enum('male', 'female', 'indefinite') DEFAULT 'indefinite',
+  `affixe` varchar(255) NOT NULL,
+  `sexe` enum('Mâle', 'Femelle', 'Indéfini') DEFAULT 'Indéfini',
   `birthday` date NOT NULL,
   `color` varchar(100) NOT NULL,
+  `eyes` varchar(100) DEFAULT NULL,
   `pedigree` text DEFAULT NULL,
   `weight` varchar(100) DEFAULT NULL,
   `status` enum('reproducteur', 'baby') DEFAULT 'reproducteur',
-  `reservation` boolean DEFAULT NULL,
+  `reservation` enum('Réservé', 'Disponible') DEFAULT 'Disponible',
   `photo` varchar(255) NOT NULL,
   `introduction` text(500) DEFAULT NULL,
   `arrival_date` date NOT NULL,
@@ -44,7 +46,7 @@ CREATE TABLE `rabbit` (
 
 LOCK TABLES `rabbit` WRITE;
 /*!40000 ALTER TABLE `rabbit` DISABLE KEYS */;
-INSERT INTO `rabbit` VALUES (1,'Ekor','Mâle','07/11/2018', 'Fauve', '...', '1035g', 'reproducteur', '1', '1689866791223-rabbit-338839789_1214924052548339_191260099021626376_n.jpg', '...', '10/12/2022', 'Tatoué 8EL-0911',1);
+INSERT INTO `rabbit` VALUES (1,'Ekor','Yarmidasplace', 'Mâle','07/11/2018', 'Fauve', 'Yeux marrons', '...', '1035g', 'reproducteur', 'Disponible', '338839789_1214924052548339_191260099021626376_n.jpg', 'Doux et serein, Gentleman. Véritable globe trotteur.', '10/12/2022', 'Tatoué 8EL-0911',1);
 /*!40000 ALTER TABLE `rabbit` ENABLE KEYS */;
 UNLOCK TABLES;
 

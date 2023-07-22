@@ -14,7 +14,7 @@
   top: 50%;
   height: 0.5px;
   background: black;
-  width: 35%;
+  width: 30%;
 }
 
 .heading-with-traits::before {
