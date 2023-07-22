@@ -21,8 +21,9 @@ export default function RabbitListBaby() {
 
   // Filtrer les lapins selon les options sélectionnées
   const filteredRabbits = babyRabbits.filter((rabbit) => {
-    const isReservedMatch = showReserved && rabbit.reservation === "réservé";
-    const isAvailableMatch = showAvailable && rabbit.reservation === "dispo";
+    const isReservedMatch = showReserved && rabbit.reservation === "Réservé";
+    const isAvailableMatch =
+      showAvailable && rabbit.reservation === "Disponible";
 
     return (
       (!showReserved && !showAvailable) || isReservedMatch || isAvailableMatch

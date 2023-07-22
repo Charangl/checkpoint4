@@ -12,7 +12,15 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 // import "../App.css";
 
-export default function Rabbit({ id, name, sexe, birthday, color, photo }) {
+export default function Rabbit({
+  id,
+  name,
+  affixe,
+  sexe,
+  birthday,
+  color,
+  photo,
+}) {
   const headingRef = useRef(null);
 
   useEffect(() => {
@@ -107,7 +115,7 @@ export default function Rabbit({ id, name, sexe, birthday, color, photo }) {
             fontWeight="bold"
             fontSize="0.7rem"
           >
-            Affixe de l'élevage
+            {affixe}
           </Text>
           <Image
             src={`${
@@ -136,6 +144,7 @@ Rabbit.propTypes = {
   color: PropTypes.string.isRequired,
   birthday: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  affixe: PropTypes.string.isRequired,
   sexe: PropTypes.string.isRequired,
   photo: PropTypes.string,
 };

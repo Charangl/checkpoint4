@@ -16,9 +16,11 @@ const imageTypes = ["image/jpeg", "image/jpg", "image/png"];
 export default function CreateRabbit() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
+  const [affixe, setAffixe] = useState("");
   const [sexe, setSexe] = useState("");
   const [birthday, setBirthday] = useState("");
   const [color, setColor] = useState("");
+  const [eyes, setEyes] = useState("");
   const [pedigree, setPedigree] = useState("");
   const [weight, setWeight] = useState("");
   const [status, setStatus] = useState("");
@@ -33,6 +35,10 @@ export default function CreateRabbit() {
     setName(e.target.value);
   };
 
+  const handleChangeAffixe = (e) => {
+    setAffixe(e.target.value);
+  };
+
   const handleChangeSexe = (e) => {
     setSexe(e.target.value);
   };
@@ -43,6 +49,10 @@ export default function CreateRabbit() {
 
   const handleChangeColor = (e) => {
     setColor(e.target.value);
+  };
+
+  const handleChangeEyes = (e) => {
+    setEyes(e.target.value);
   };
 
   const handleChangePedigree = (e) => {
@@ -107,9 +117,11 @@ export default function CreateRabbit() {
       const rabbitData = new FormData();
       rabbitData.append("photo", photo);
       rabbitData.append("name", name);
+      rabbitData.append("affixe", affixe);
       rabbitData.append("sexe", sexe);
       rabbitData.append("birthday", birthday);
       rabbitData.append("color", color);
+      rabbitData.append("eyes", eyes);
       rabbitData.append("pedigree", pedigree);
       rabbitData.append("weight", weight);
       rabbitData.append("status", status);
@@ -192,6 +204,31 @@ export default function CreateRabbit() {
               />
               <Input
                 required
+                name="affixe"
+                placeholder="Affixe de l'élevage"
+                type="text"
+                value={affixe}
+                onChange={handleChangeAffixe}
+                mb={5}
+                color="black"
+                fontSize="10pt"
+                _placeholder={{ color: "gray.500" }}
+                _hover={{
+                  bg: "white",
+                  color: "black",
+                  border: "1px solid",
+                  borderColor: "blue.500",
+                }}
+                _focus={{
+                  outline: "none",
+                  bg: "white",
+                  border: "1px solid",
+                  borderColor: "blue.500",
+                }}
+                bg="gray.50"
+              />
+              <Input
+                required
                 name="sexe"
                 placeholder="Sexe"
                 type="text"
@@ -247,6 +284,31 @@ export default function CreateRabbit() {
                 type="text"
                 value={color}
                 onChange={handleChangeColor}
+                mb={5}
+                color="black"
+                fontSize="10pt"
+                _placeholder={{ color: "gray.500" }}
+                _hover={{
+                  bg: "white",
+                  color: "black",
+                  border: "1px solid",
+                  borderColor: "blue.500",
+                }}
+                _focus={{
+                  outline: "none",
+                  bg: "white",
+                  border: "1px solid",
+                  borderColor: "blue.500",
+                }}
+                bg="gray.50"
+              />
+              <Input
+                required
+                name="eyes"
+                placeholder="Couleur des yeux"
+                type="text"
+                value={eyes}
+                onChange={handleChangeEyes}
                 mb={5}
                 color="black"
                 fontSize="10pt"
