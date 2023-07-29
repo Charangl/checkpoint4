@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { convertDateFormat } from "../../services/convertTime";
+// import DeleteRabbit from "./DeleteRabbit";
 // import "../App.css";
 
 export default function Rabbit({
@@ -130,7 +132,8 @@ export default function Rabbit({
           <Stack mt="6" spacing="3">
             <Heading size="sm">{sexe}</Heading>
             <Text>
-              {birthday} {color}
+              Né(e) le {convertDateFormat(birthday)} <br />
+              {color}
             </Text>
           </Stack>
         </CardBody>

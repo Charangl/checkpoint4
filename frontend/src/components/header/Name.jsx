@@ -1,7 +1,7 @@
 import { Box, Heading, Image, Text } from "@chakra-ui/react";
 import React, { useContext } from "react";
-import imageHeader from "../assets/imageHeader.png";
-import UserContext from "../contexts/UserContext";
+import imageHeader from "../../assets/imageHeader.png";
+import UserContext from "../../contexts/UserContext";
 
 export default function Name() {
   const [{ user }] = useContext(UserContext);

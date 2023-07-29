@@ -1,9 +1,16 @@
-import { Flex, Box, Heading, Text } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Heading,
+  Text,
+  Divider,
+  AbsoluteCenter,
+} from "@chakra-ui/react";
 import React from "react";
 
 export default function Intro() {
   return (
-    <Box>
+    <Box zIndex={-2}>
       <Flex
         bg="#f0e6e6"
         borderRadius="1rem"
@@ -14,36 +21,20 @@ export default function Intro() {
         mt={{ base: "2rem", md: "5rem" }}
         mx="auto"
       >
-        <Box p="1rem">
+        <Box>
           <Heading
             fontSize="1.1rem"
-            mb="2rem"
+            my="2rem"
             fontFamily="Playfair Display"
             textTransform="uppercase"
             letterSpacing="0.1rem"
             position="relative"
-            _before={{
-              content: '""',
-              position: "absolute",
-              top: "50%",
-              width: "4rem",
-              height: "0.5px",
-              background: "black",
-              left: "-1rem",
-            }}
-            _after={{
-              content: '""',
-              position: "absolute",
-              top: "50%",
-              width: "77%",
-              height: "0.5px",
-              background: "black",
-              right: "-1rem",
-            }}
+            padding="1"
           >
-            <Text ml="4rem" w="30%">
+            <Divider bg="black" h="0.5px" />
+            <AbsoluteCenter bg="#f0e6e6" px="4">
               Qui suis-je ?
-            </Text>
+            </AbsoluteCenter>
           </Heading>
           <Text>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
@@ -52,36 +43,20 @@ export default function Intro() {
             ratione quam qui?
           </Text>
         </Box>
-        <Box p="1rem">
+        <Box>
           <Heading
             fontSize="1.1rem"
-            mb="2rem"
+            my="2rem"
             fontFamily="Playfair Display"
             textTransform="uppercase"
             letterSpacing="0.1rem"
             position="relative"
-            _before={{
-              content: '""',
-              position: "absolute",
-              top: "50%",
-              width: "82%",
-              height: "1px",
-              background: "black",
-              left: "-1rem",
-            }}
-            _after={{
-              content: '""',
-              position: "absolute",
-              top: "50%",
-              width: "6%",
-              height: "1px",
-              background: "black",
-              right: "-1rem",
-            }}
+            padding="1"
           >
-            <Text ml="82.3%" w="30%">
-              à propos
-            </Text>
+            <Divider bg="black" h="1px" />
+            <AbsoluteCenter bg="#f0e6e6" px="4">
+              À propos
+            </AbsoluteCenter>
           </Heading>
           <Text>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
@@ -99,36 +74,20 @@ export default function Intro() {
             Pellentesque suscipit eros nec pulvinar porta.
           </Text>
         </Box>
-        <Box p="1rem">
+        <Box>
           <Heading
             fontSize="1.1rem"
-            mb="2rem"
+            my="2rem"
             fontFamily="Playfair Display"
             textTransform="uppercase"
             letterSpacing="0.1rem"
             position="relative"
-            _before={{
-              content: '""',
-              position: "absolute",
-              top: "50%",
-              width: "4rem",
-              height: "1px",
-              background: "black",
-              left: "-1rem", // Adjust the spacing as needed
-            }}
-            _after={{
-              content: '""',
-              position: "absolute",
-              top: "50%",
-              width: "69.5%",
-              height: "1px",
-              background: "black",
-              right: "-1rem", // Adjust the spacing as needed
-            }}
+            padding="1"
           >
-            <Text ml="4rem" w="40%">
+            <Divider bg="black" h="1px" />
+            <AbsoluteCenter bg="#f0e6e6" px="4">
               Mes engagements
-            </Text>
+            </AbsoluteCenter>
           </Heading>
           <Text>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis

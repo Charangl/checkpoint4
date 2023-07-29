@@ -1,7 +1,7 @@
 import { Box, Input, Text, Button, useToast, Center } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useUserContext } from "../contexts/UserContext";
+import { useUserContext } from "../../contexts/UserContext";
 
 export default function Login() {
   const dispatch = useUserContext()[1];

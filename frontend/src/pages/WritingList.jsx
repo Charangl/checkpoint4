@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Flex } from "@chakra-ui/react";
-import Writing from "../components/Writing";
+import Writing from "../components/article/Writing";
 
 export default function WritingList() {
   const [writings, setWritings] = useState([]);
@@ -16,12 +16,7 @@ export default function WritingList() {
   }, []);
 
   return (
-    <Flex
-      justifyContent="space-evenly"
-      flexWrap="wrap"
-      ml={{ base: "0rem", md: "5rem" }}
-      mr={{ md: "5rem" }}
-    >
+    <Flex flexWrap="wrap" ml={{ base: "0rem", md: "5rem" }} mr={{ md: "5rem" }}>
       {writings.map((writing) => (
         <Writing {...writing} key={`writing-${writing.id}`} />
       ))}

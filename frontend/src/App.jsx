@@ -1,32 +1,30 @@
 import { Routes, Route } from "react-router-dom";
 import { Grid, GridItem } from "@chakra-ui/react";
 
-import Login from "./components/Login";
-import SignIn from "./components/SignIn";
+import Login from "./components/connexion/Login";
+import SignIn from "./components/connexion/SignIn";
 import Home from "./pages/Home";
 import Intro from "./pages/Intro";
-import Name from "./components/Name";
-import Navbar from "./components/Navbar";
+import Name from "./components/header/Name";
+import Navbar from "./components/header/Navbar";
 import RabbitListRepro from "./pages/RabbitListRepro";
 import RabbitListBaby from "./pages/RabbitListBaby";
 import RabbitDetails from "./pages/RabbitDetails";
 import WritingList from "./pages/WritingList";
-// import WritingDetails from "./pages/WritingDetails";
-import PrivateRoutes from "./components/PrivateRoutes";
+import WritingDetails from "./pages/WritingDetails";
+import PrivateRoutes from "./components/private/PrivateRoutes";
 import Gestion from "./pages/Gestion";
-// import { UserContextProvider } from "./contexts/UserContext";
 
 import "./App.css";
 
 function App() {
   return (
-    // <UserContextProvider>
     <main>
       <Grid
         templateColumns={{ base: "0rem 1fr", md: "15rem 1fr" }}
         minH={{ md: "100vh" }}
       >
-        <GridItem>
+        <GridItem position="relative" zIndex={2}>
           <div
             style={{
               position: "fixed",
@@ -39,9 +37,13 @@ function App() {
             <Navbar />
           </div>
         </GridItem>
-        <GridItem>
+        <GridItem position="relative" zIndex={1}>
           <div
-            style={{ overflowY: "scroll", height: "100vh", padding: "20px" }}
+            style={{
+              overflowY: "scroll",
+              height: "100vh",
+              padding: "20px",
+            }}
           >
             <Name />
             <Routes>
@@ -53,7 +55,7 @@ function App() {
               <Route path="/baby" element={<RabbitListBaby />} />
               <Route path="/rabbits/:id" element={<RabbitDetails />} />
               <Route path="/writingList" element={<WritingList />} />
-              {/* <Route path="/writings/:id" element={<WritingDetails />} /> */}
+              <Route path="/writings/:id" element={<WritingDetails />} />
               <Route path="/name" element={<Name />} />
               <Route
                 path="/"
@@ -66,7 +68,6 @@ function App() {
         </GridItem>
       </Grid>
     </main>
-    // </UserContextProvider>
   );
 }
 

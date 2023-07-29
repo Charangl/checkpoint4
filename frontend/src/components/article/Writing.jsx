@@ -3,7 +3,7 @@ import { useRef, useEffect } from "react";
 import { Box, Image, Heading, Text } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import "../App.css";
+import "../../App.css";
 
 export default function Writing({ id, title, article, image }) {
   const headingRef = useRef(null);
@@ -93,13 +93,18 @@ export default function Writing({ id, title, article, image }) {
             src={`${import.meta.env.VITE_BACKEND_URL}/assets/images/${image}`}
             alt={title}
             borderRadius="lg"
-            boxSize="35%"
+            boxSize="25%"
             objectFit="cover"
             float="left"
             mr="1.2rem"
             mb="0.3rem"
           />
-          <Text>{article}</Text>
+          <Text>{article.slice(-400)}</Text>
+          <Link to={`/writings/${id}`}>
+            <Text color="#50908f" fontSize="xs" textAlign="right">
+              ... lire la suite
+            </Text>
+          </Link>
         </Box>
       </Box>
     </Box>

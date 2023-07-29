@@ -7,6 +7,7 @@ import {
   SimpleGrid,
   Textarea,
   useToast,
+  Select,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -227,31 +228,16 @@ export default function CreateRabbit() {
                 }}
                 bg="gray.50"
               />
-              <Input
-                required
-                name="sexe"
-                placeholder="Sexe"
-                type="text"
+              <Select
+                placeholder="Choisir le sexe"
                 value={sexe}
                 onChange={handleChangeSexe}
-                mb={5}
-                color="black"
-                fontSize="10pt"
-                _placeholder={{ color: "gray.500" }}
-                _hover={{
-                  bg: "white",
-                  color: "black",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                _focus={{
-                  outline: "none",
-                  bg: "white",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                bg="gray.50"
-              />
+              >
+                <option value="Mâle">Mâle</option>
+                <option value="Femelle">Femelle</option>
+                <option value="Indéfini">Indéfini</option>
+              </Select>
+
               <Input
                 required
                 name="birthday"
@@ -380,56 +366,25 @@ export default function CreateRabbit() {
                 }}
                 bg="gray.50"
               />
-              <Input
-                required
-                name="status"
-                placeholder="status"
-                type="status"
+
+              <Select
+                placeholder="Choisir le status"
                 value={status}
                 onChange={handleChangeStatus}
-                mb={5}
-                color="black"
-                fontSize="10pt"
-                _placeholder={{ color: "gray.500" }}
-                _hover={{
-                  bg: "white",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                _focus={{
-                  outline: "none",
-                  bg: "white",
-                  color: "black",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                bg="gray.50"
-              />
-              <Input
-                required
-                name="reservation"
-                placeholder="Réservé"
-                type="text"
+              >
+                <option value="reproducteur">Reproducteur</option>
+                <option value="baby">Bébé</option>
+              </Select>
+
+              <Select
+                placeholder="Dispo ou réservé ?"
                 value={reservation}
                 onChange={handleChangeReservation}
-                mb={5}
-                color="black"
-                fontSize="10pt"
-                _placeholder={{ color: "gray.500" }}
-                _hover={{
-                  bg: "white",
-                  color: "black",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                _focus={{
-                  outline: "none",
-                  bg: "white",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                bg="gray.50"
-              />
+              >
+                <option value="Disponible">Disponible</option>
+                <option value="Réservé">Réservé</option>
+              </Select>
+
               <Input
                 required
                 name="arrivalDate"
