@@ -10,9 +10,19 @@ import {
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import "../App.css";
+import { convertDateFormat } from "../../services/convertTime";
+// import DeleteRabbit from "./DeleteRabbit";
+// import "../App.css";
 
-export default function Rabbit({ id, name, sexe, birthday, color, photo }) {
+export default function Rabbit({
+  id,
+  name,
+  affixe,
+  sexe,
+  birthday,
+  color,
+  photo,
+}) {
   const headingRef = useRef(null);
 
   useEffect(() => {
@@ -59,27 +69,26 @@ export default function Rabbit({ id, name, sexe, birthday, color, photo }) {
           <Link to={`/rabbits/${id}`}>
             <Heading
               ref={headingRef}
-              fontSize="1.2rem"
-              mb="2rem"
-              fontFamily="Playfair Display"
-              textTransform="uppercase"
+              fontSize="2rem"
+              fontFamily="Dancing script"
               textAlign="center"
-              letterSpacing="0.1rem"
               position="relative"
-              className="heading-with-traits"
+              // className="heading-with-traits"
               style={{
                 "--pseudo-width": "35%",
                 "--pseudo-left": "-5px",
                 "--pseudo-right": "-5px",
               }}
             >
-              <Text> {name} </Text>
+              <Text w="40%" mx="30%">
+                {name}
+              </Text>
 
               <Box
                 style={{
                   content: '""',
                   position: "absolute",
-                  top: "50%",
+                  top: "62%",
                   height: "0.5px",
                   background: "black",
                   width: "var(--pseudo-width)",
@@ -90,7 +99,7 @@ export default function Rabbit({ id, name, sexe, birthday, color, photo }) {
                 style={{
                   content: '""',
                   position: "absolute",
-                  top: "50%",
+                  top: "62%",
                   height: "0.5px",
                   background: "black",
                   width: "var(--pseudo-width)",
@@ -99,6 +108,17 @@ export default function Rabbit({ id, name, sexe, birthday, color, photo }) {
               />
             </Heading>
           </Link>
+          <Text
+            textAlign="center"
+            pb="1rem"
+            fontFamily="Playfair Display"
+            textTransform="uppercase"
+            letterSpacing="0.1rem"
+            fontWeight="bold"
+            fontSize="0.7rem"
+          >
+            {affixe}
+          </Text>
           <Image
             src={`${
               import.meta.env.VITE_BACKEND_URL
@@ -112,7 +132,8 @@ export default function Rabbit({ id, name, sexe, birthday, color, photo }) {
           <Stack mt="6" spacing="3">
             <Heading size="sm">{sexe}</Heading>
             <Text>
-              {birthday} {color}
+              Né(e) le {convertDateFormat(birthday)} <br />
+              {color}
             </Text>
           </Stack>
         </CardBody>
@@ -126,6 +147,7 @@ Rabbit.propTypes = {
   color: PropTypes.string.isRequired,
   birthday: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  affixe: PropTypes.string.isRequired,
   sexe: PropTypes.string.isRequired,
   photo: PropTypes.string,
 };

@@ -1,9 +1,16 @@
-import { Flex, Box, Heading, Text } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Heading,
+  Text,
+  Divider,
+  AbsoluteCenter,
+} from "@chakra-ui/react";
 import React from "react";
 
 export default function Intro() {
   return (
-    <Box>
+    <Box zIndex={-2}>
       <Flex
         bg="#f0e6e6"
         borderRadius="1rem"
@@ -11,37 +18,23 @@ export default function Intro() {
         p="2rem"
         flexDir="column"
         w="78.5%"
-        mt="5rem"
+        mt={{ base: "2rem", md: "5rem" }}
         mx="auto"
       >
-        <Box p="1rem">
+        <Box>
           <Heading
-            fontSize="1.2rem"
-            mb="2rem"
+            fontSize="1.1rem"
+            my="2rem"
             fontFamily="Playfair Display"
             textTransform="uppercase"
             letterSpacing="0.1rem"
             position="relative"
-            _before={{
-              content: '""',
-              position: "absolute",
-              top: "50%",
-              width: "7%",
-              height: "0.5px",
-              background: "black",
-              left: "-10px",
-            }}
-            _after={{
-              content: '""',
-              position: "absolute",
-              top: "50%",
-              width: "77%",
-              height: "0.5px",
-              background: "black",
-              right: "-10px",
-            }}
+            padding="1"
           >
-            <Text ml="7%">Qui suis-je ?</Text>
+            <Divider bg="black" h="0.5px" />
+            <AbsoluteCenter bg="#f0e6e6" px="4">
+              Qui suis-je ?
+            </AbsoluteCenter>
           </Heading>
           <Text>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
@@ -50,34 +43,20 @@ export default function Intro() {
             ratione quam qui?
           </Text>
         </Box>
-        <Box p="1rem">
+        <Box>
           <Heading
-            fontSize="1.2rem"
-            mb="2rem"
+            fontSize="1.1rem"
+            my="2rem"
             fontFamily="Playfair Display"
             textTransform="uppercase"
             letterSpacing="0.1rem"
             position="relative"
-            _before={{
-              content: '""',
-              position: "absolute",
-              top: "50%",
-              width: "82%",
-              height: "1px",
-              background: "black",
-              left: "-10px",
-            }}
-            _after={{
-              content: '""',
-              position: "absolute",
-              top: "50%",
-              width: "6%",
-              height: "1px",
-              background: "black",
-              right: "-10px",
-            }}
+            padding="1"
           >
-            <Text ml="82.5%">à propos</Text>
+            <Divider bg="black" h="1px" />
+            <AbsoluteCenter bg="#f0e6e6" px="4">
+              À propos
+            </AbsoluteCenter>
           </Heading>
           <Text>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
@@ -95,34 +74,20 @@ export default function Intro() {
             Pellentesque suscipit eros nec pulvinar porta.
           </Text>
         </Box>
-        <Box p="1rem">
+        <Box>
           <Heading
-            fontSize="1.2rem"
-            mb="2rem"
+            fontSize="1.1rem"
+            my="2rem"
             fontFamily="Playfair Display"
             textTransform="uppercase"
             letterSpacing="0.1rem"
             position="relative"
-            _before={{
-              content: '""',
-              position: "absolute",
-              top: "50%",
-              width: "7%",
-              height: "1px",
-              background: "black",
-              left: "-10px", // Adjust the spacing as needed
-            }}
-            _after={{
-              content: '""',
-              position: "absolute",
-              top: "50%",
-              width: "69.5%",
-              height: "1px",
-              background: "black",
-              right: "-10px", // Adjust the spacing as needed
-            }}
+            padding="1"
           >
-            <Text ml="7%">Mes engagements</Text>
+            <Divider bg="black" h="1px" />
+            <AbsoluteCenter bg="#f0e6e6" px="4">
+              Mes engagements
+            </AbsoluteCenter>
           </Heading>
           <Text>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis

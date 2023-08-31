@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet, Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useUserContext } from "../contexts/UserContext";
+import { useUserContext } from "../../contexts/UserContext";
 
 export default function PrivateRoutes({ authorizedRoles }) {
   const [{ user }] = useUserContext();

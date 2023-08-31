@@ -1,9 +1,9 @@
 import { useRef, useEffect } from "react";
 
-import { Box, Image, Heading, Flex, Text } from "@chakra-ui/react";
+import { Box, Image, Heading, Text } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import "../App.css";
+import "../../App.css";
 
 export default function Writing({ id, title, article, image }) {
   const headingRef = useRef(null);
@@ -15,17 +15,14 @@ export default function Writing({ id, title, article, image }) {
         const textElement = headingElement.querySelector("Text");
         if (textElement) {
           const textWidth = textElement.offsetWidth;
-          headingElement.style.setProperty(
-            "--pseudo-width",
-            `${textWidth * 0.35}px`
-          );
+          headingElement.style.setProperty("--pseudo-width", `${textWidth}px`);
           headingElement.style.setProperty(
             "--pseudo-left",
-            `calc(50% - ${textWidth * 0.175}px)`
+            `calc(50% - ${textWidth * 0.5}px)`
           );
           headingElement.style.setProperty(
             "--pseudo-right",
-            `calc(50% - ${textWidth * 0.175}px)`
+            `calc(50% - ${textWidth * 0.5}px)`
           );
         }
       }
@@ -58,16 +55,14 @@ export default function Writing({ id, title, article, image }) {
             fontFamily="Playfair Display"
             textTransform="uppercase"
             textAlign="center"
+            mx="auto"
             letterSpacing="0.1rem"
             position="relative"
             className="heading-with-traits"
-            style={{
-              "--pseudo-width": "35%",
-              "--pseudo-left": "-5px",
-              "--pseudo-right": "-5px",
-            }}
           >
-            <Text> {title} </Text>
+            <Text w="40%" mx="30%">
+              {title}
+            </Text>
 
             <Box
               style={{
@@ -93,19 +88,24 @@ export default function Writing({ id, title, article, image }) {
             />
           </Heading>
         </Link>
-        <Flex>
+        <Box>
           <Image
             src={`${import.meta.env.VITE_BACKEND_URL}/assets/images/${image}`}
             alt={title}
             borderRadius="lg"
-            h="auto"
-            w="35%"
+            boxSize="25%"
             objectFit="cover"
             float="left"
-            mr="2rem"
+            mr="1.2rem"
+            mb="0.3rem"
           />
-          <p>{article}</p>
-        </Flex>
+          <Text>{article.slice(-400)}</Text>
+          <Link to={`/writings/${id}`}>
+            <Text color="#50908f" fontSize="xs" textAlign="right">
+              ... lire la suite
+            </Text>
+          </Link>
+        </Box>
       </Box>
     </Box>
   );

@@ -7,12 +7,14 @@ class RabbitManager extends AbstractManager {
 
   insert(rabbit) {
     return this.database.query(
-      `insert into ${this.table} (name, sexe, birthday, color, pedigree, weight, status, reservation, photo, introduction, arrival_date, tattoo, breeding_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+      `insert into ${this.table} (name, affixe, sexe, birthday, color, eyes, pedigree, weight, status, reservation, photo, introduction, arrival_date, tattoo, breeding_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
       [
         rabbit.name,
+        rabbit.affixe,
         rabbit.sexe,
         rabbit.birthday,
         rabbit.color,
+        rabbit.eyes,
         rabbit.pedigree,
         rabbit.weight,
         rabbit.status,
@@ -35,14 +37,14 @@ class RabbitManager extends AbstractManager {
 
   find(id) {
     return this.database.query(
-      `select id, name, sexe, birthday, color, pedigree, weight, status, reservation, photo, introduction, arrival_date, tattoo, breeding_id from  ${this.table} where id = ?`,
+      `select id, name, affixe, sexe, birthday, color, eyes, pedigree, weight, status, reservation, photo, introduction, arrival_date, tattoo, breeding_id from  ${this.table} where id = ?`,
       [id]
     );
   }
 
   findAll() {
     return this.database.query(
-      `select id, name, sexe, birthday, color, pedigree, weight, status, reservation, photo, introduction, arrival_date, tattoo, breeding_id from  ${this.table}`
+      `select id, name, affixe, sexe, birthday, color, eyes, pedigree, weight, status, reservation, photo, introduction, arrival_date, tattoo, breeding_id from  ${this.table}`
     );
   }
 }

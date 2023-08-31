@@ -1,14 +1,18 @@
+// SignIn.js
 import { Box, Input, Text, Button, useToast, Center } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useUserContext } from "../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
-  const dispatch = useUserContext()[1];
+export default function SignIn() {
   const navigate = useNavigate();
+  const [pseudo, setPseudo] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const toast = useToast();
+
+  const handleChangePseudo = (e) => {
+    setPseudo(e.target.value);
+  };
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -21,16 +25,24 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      console.info("Vous devez remplir tous les champs !");
+    if (!pseudo || !email || !password) {
+      toast({
+        title: "Champs",
+        description: "Vous devez remplir tous les champs !",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+        position: "bottom-right",
+      });
     } else {
-      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/users/login`, {
+      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/users/`, {
         method: "POST",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          pseudo,
           email,
           password,
         }),
@@ -38,20 +50,20 @@ export default function Login() {
         .then((res) => res.json())
         .then((data) => {
           console.warn(data);
-          dispatch({ type: "SET_USER", payload: data });
           toast({
-            title: "Authentification réussie.",
+            title: "Compte créé.",
+            description: "Vous allez être redirigé vers la page de connexion.",
             status: "success",
             duration: 3000,
             isClosable: true,
             position: "bottom-right",
           });
-          navigate(`/`);
+          navigate(`/login`);
         })
         .catch(() => {
           toast({
             title: "Erreur.",
-            description: "Impossible de se connecter, veuillez réessayer.",
+            description: "Impossible de s'inscrire, veuillez réessayer.",
             status: "error",
             duration: 3000,
             isClosable: true,
@@ -71,15 +83,35 @@ export default function Login() {
         >
           <Box mt={{ base: "1rem", md: "7rem" }}>
             <Text as="b" fontSize={{ base: "18px", md: "2xl" }}>
-              Bienvenue !
+              S'enregistrer
             </Text>
           </Box>
-          <Box mt={3}>
-            <Text>
-              Vous n'avez pas de compte ?{" "}
-              <NavLink to="/signIn">S'enregistrer</NavLink>
-            </Text>
-          </Box>
+          <Input
+            required
+            name="pseudo"
+            placeholder="Pseudo"
+            type="text"
+            onChange={handleChangePseudo}
+            value={pseudo}
+            mt="2rem"
+            mb={5}
+            fontSize="10pt"
+            color="black"
+            _placeholder={{ color: "gray.600" }}
+            _hover={{
+              bg: "white",
+              color: "black",
+              border: "1px solid",
+              borderColor: "brown.400",
+            }}
+            _focus={{
+              outline: "none",
+              bg: "white",
+              border: "1px solid",
+              borderColor: "brown.400",
+            }}
+            bg="#e3d5d1"
+          />
           <Input
             required
             name="email"
@@ -87,7 +119,6 @@ export default function Login() {
             type="email"
             onChange={handleChangeEmail}
             value={email}
-            mt="2rem"
             mb={5}
             fontSize="10pt"
             color="black"
@@ -137,7 +168,7 @@ export default function Login() {
             width="100%"
             type="submit"
             onClick={() => {
-              if (!email || !password) {
+              if (!pseudo || !email || !password) {
                 toast({
                   title: "Champs manquants.",
                   description: "Vous devez remplir tous les champs.",
@@ -149,7 +180,7 @@ export default function Login() {
               }
             }}
           >
-            Me connecter
+            S'enregistrer
           </Button>
         </Box>
       </Center>
