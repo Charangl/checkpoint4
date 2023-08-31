@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import DeleteWriting from "../components/article/DeleteArticle";
+import EditArticle from "../components/article/EditArticle";
 
 export default function WritingDetails() {
   const [writing, setWriting] = useState(null);
@@ -90,6 +91,7 @@ export default function WritingDetails() {
       <Box minH="25rem">
         <Text>{writing.article}</Text>
         <DeleteWriting />
+        <EditArticle />
       </Box>
     </Box>
   );

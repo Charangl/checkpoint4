@@ -14,7 +14,7 @@ import WritingList from "./pages/WritingList";
 import WritingDetails from "./pages/WritingDetails";
 import PrivateRoutes from "./components/private/PrivateRoutes";
 import Gestion from "./pages/Gestion";
-
+import Contact from "./pages/Contact";
 import "./App.css";
 
 function App() {
@@ -57,6 +57,7 @@ function App() {
               <Route path="/writingList" element={<WritingList />} />
               <Route path="/writings/:id" element={<WritingDetails />} />
               <Route path="/name" element={<Name />} />
+              <Route path="/contact" element={<Contact />} />
               <Route
                 path="/"
                 element={<PrivateRoutes authorizedRoles={["admin"]} />}

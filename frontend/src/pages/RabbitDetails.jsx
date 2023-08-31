@@ -2,6 +2,7 @@ import { Box, Image, Text, Heading } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import DeleteRabbit from "../components/rabbit/DeleteRabbit";
+import EditRabbit from "../components/rabbit/EditRabbit";
 
 export default function RabbitDetails() {
   const [rabbit, setRabbit] = useState(null);
@@ -81,6 +82,7 @@ export default function RabbitDetails() {
           Pédigree : <span>{rabbit.pedigree}</span>
         </Text>
         <DeleteRabbit />
+        <EditRabbit />
       </Box>
     </Box>
   );

@@ -143,7 +143,7 @@ export default function CreateRabbit() {
         .catch(() => {
           toast({
             title: "Erreur.",
-            description: "Erreur lors de la création de l'article.",
+            description: "Erreur lors de la création de la fiche lapin.",
             status: "error",
             duration: 3000,
             isClosable: true,
