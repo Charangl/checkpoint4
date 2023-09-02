@@ -47,8 +47,11 @@ export default function Contact() {
   return (
     <Center>
       <Box mt="3rem" textAlign="center">
-        <Text mb="2rem" fontSize="xl">
-          Contacter l'éleveuse, elle vous répondra dans les plus brefs délais.
+        <Text mb="2rem" fontSize="sm">
+          Une question ? Une demande d'informations ou l'envie de réserver un
+          petit lapereau ?<br />
+          N'hésitez pas à me contacter, je vous répondrai dans les plus brefs
+          délais.
         </Text>
         <form onSubmit={handleSubmit}>
           <FormLabel textAlign="center">Votre email</FormLabel>

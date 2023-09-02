@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import DeleteRabbit from "../components/rabbit/DeleteRabbit";
 import EditRabbit from "../components/rabbit/EditRabbit";
+import { convertDateFormat } from "../services/convertTime";
 
 export default function RabbitDetails() {
   const [rabbit, setRabbit] = useState(null);
@@ -29,21 +30,29 @@ export default function RabbitDetails() {
       bg="#f0e6e6"
       borderRadius="1rem"
       boxShadow="md"
-      p="2rem"
+      p="2rem 2rem 0.1rem 2rem"
       flexDir="column"
       w="78.5%"
       mt={{ base: "2rem", md: "5rem" }}
       mx="auto"
     >
       <Heading
-        fontSize="1.2rem"
+        fontSize={{ base: "1.5rem", md: "2.5rem" }}
+        fontFamily="Dancing script"
+        textAlign="center"
+        mt="-1rem"
+      >
+        {rabbit.name}
+      </Heading>
+      <Text
         fontFamily="Playfair Display"
         textTransform="uppercase"
         letterSpacing="0.1rem"
         textAlign="center"
+        mb="1rem"
       >
-        {rabbit.name}
-      </Heading>
+        {rabbit.affixe}
+      </Text>
       <Image
         borderRadius="lg"
         h="auto"
@@ -58,31 +67,34 @@ export default function RabbitDetails() {
       />
       <Box mb="2rem">
         <Text>
-          Sexe : <span>{rabbit.sexe}</span>
+          {" "}
+          Né.e le {convertDateFormat(rabbit.birthday)} et arrivé.e le{" "}
+          <span>{convertDateFormat(rabbit.arrival_date)} à l'élevage.</span>
         </Text>
         <Text>
-          Couleur : <span>{rabbit.color}</span>
+          <span>
+            {rabbit.sexe} de couleur {rabbit.color} et aux yeux {rabbit.eyes}
+          </span>
         </Text>
+
         <Text>
-          Né.e le : <span>{rabbit.birthday}</span>
+          Poids : <span>{rabbit.weight}</span>
+        </Text>
+
+        <Text>
+          Tatouage : <span>{rabbit.tattoo}</span>
+        </Text>
+
+        <Text>
+          Pédigree : <span>{rabbit.pedigree}</span>
         </Text>
         <Text>
           Présentation : <span>{rabbit.introduction}</span>
         </Text>
-        <Text>
-          Tatouage : <span>{rabbit.tattoo}</span>
-        </Text>
-        <Text>
-          Status : <span>{rabbit.status}</span>
-        </Text>
-        <Text>
-          <span>{rabbit.reservation}</span>
-        </Text>
-        <Text>
-          Pédigree : <span>{rabbit.pedigree}</span>
-        </Text>
-        <DeleteRabbit />
-        <EditRabbit />
+        <Box display="flex" justifyContent="right" mt="2rem">
+          <EditRabbit />
+          <DeleteRabbit />
+        </Box>
       </Box>
     </Box>
   );

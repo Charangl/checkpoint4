@@ -6,11 +6,31 @@ import {
   Divider,
   AbsoluteCenter,
 } from "@chakra-ui/react";
-import React from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import EditIntro from "../components/intro/EditIntro";
 
 export default function Intro() {
+  const [breeding, setBreeding] = useState(null);
+
+  const { id } = useParams();
+
+  const getOneBreeding = () => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/breedings/${1}`)
+      .then((resp) => resp.json())
+      .then((data) => setBreeding(data))
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    getOneBreeding();
+  }, [id]);
+
+  if (!breeding) {
+    return <p>Chargement de la page</p>;
+  }
   return (
-    <Box zIndex={-2}>
+    <Box>
       <Flex
         bg="#f0e6e6"
         borderRadius="1rem"
@@ -36,12 +56,7 @@ export default function Intro() {
               Qui suis-je ?
             </AbsoluteCenter>
           </Heading>
-          <Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-            porro facilis ad recusandae tempora placeat quae quisquam minus
-            nostrum officia. Voluptas autem fuga pariatur cumque minima sunt
-            ratione quam qui?
-          </Text>
+          <Text>{breeding.breeder}</Text>
         </Box>
         <Box>
           <Heading
@@ -58,21 +73,7 @@ export default function Intro() {
               À propos
             </AbsoluteCenter>
           </Heading>
-          <Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-            porro facilis ad recusandae tempora placeat quae quisquam minus
-            nostrum officia. Voluptas autem fuga pariatur cumque minima sunt
-            ratione quam qui? Donec blandit eleifend dui. Aenean varius, tellus
-            non condimentum gravida, turpis tortor hendrerit mauris, a gravida
-            dolor quam fermentum augue. Vivamus vehicula faucibus sollicitudin.
-            Vivamus ut dapibus metus. Nunc posuere augue at rutrum fringilla.
-            Sed nec venenatis augue. Phasellus mollis lacus vel nibh semper
-            vestibulum. Donec urna nisl, gravida in mauris id, ultrices molestie
-            massa. Suspendisse dictum, augue at laoreet bibendum, nisl elit
-            dictum mauris, vel malesuada orci dui vitae magna. Curabitur et
-            imperdiet nisl, ac vestibulum ligula. Suspendisse vel ligula augue.
-            Pellentesque suscipit eros nec pulvinar porta.
-          </Text>
+          <Text>{breeding.introduction}</Text>
         </Box>
         <Box>
           <Heading
@@ -89,12 +90,33 @@ export default function Intro() {
               Mes engagements
             </AbsoluteCenter>
           </Heading>
+          <Text>{breeding.engagement}</Text>
+        </Box>
+        <Box>
+          <Heading
+            fontSize="1.1rem"
+            my="2rem"
+            fontFamily="Playfair Display"
+            textTransform="uppercase"
+            letterSpacing="0.1rem"
+            position="relative"
+            padding="1"
+          >
+            <Divider bg="black" h="1px" />
+            <AbsoluteCenter bg="#f0e6e6" px="4">
+              Coordonnées
+            </AbsoluteCenter>
+          </Heading>
           <Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-            porro facilis ad recusandae tempora placeat quae quisquam minus
-            nostrum officia. Voluptas autem fuga pariatur cumque minima sunt
-            ratione quam qui?
+            {breeding.name}
+            <br />
+            {breeding.street}
+            <br />
+            {breeding.zip_code} {breeding.city}
           </Text>
+        </Box>
+        <Box display="flex" justifyContent="right" mt="2rem">
+          <EditIntro />
         </Box>
       </Flex>
     </Box>

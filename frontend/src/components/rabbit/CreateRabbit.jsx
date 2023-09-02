@@ -1,5 +1,8 @@
 import {
-  Flex,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
   Box,
   Heading,
   Input,
@@ -8,7 +11,9 @@ import {
   Textarea,
   useToast,
   Select,
+  Text,
 } from "@chakra-ui/react";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -153,322 +158,338 @@ export default function CreateRabbit() {
     }
   };
   return (
-    <Flex
+    <Accordion
+      allowMultiple
       bg="#f0e6e6"
       borderRadius="1rem"
       boxShadow="md"
-      p="2rem"
+      p="1rem"
       flexDir="column"
       w="90%"
       mt="2rem"
       mx="auto"
     >
-      <Box p="1rem">
-        <Heading
-          fontSize="1.2rem"
-          fontFamily="Playfair Display"
-          textTransform="uppercase"
-          letterSpacing="0.1rem"
-        >
-          Ajouter un lapin
+      <AccordionItem>
+        <Heading>
+          <AccordionButton>
+            <Text
+              fontSize="1.2rem"
+              fontFamily="Playfair Display"
+              textTransform="uppercase"
+              letterSpacing="0.1rem"
+              fontWeight="bold"
+            >
+              Ajouter un Lapin
+            </Text>
+          </AccordionButton>
         </Heading>
-        <form
-          onSubmit={handleSubmit}
-          // className="flex flex-1 flex-col justify-evenly items-center"
-        >
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-            <Box mt={{ base: "1rem", md: "2rem" }} zIndex={{ base: "2" }}>
-              <Input
-                required
-                name="name"
-                placeholder="Nom"
-                type="text"
-                value={name}
-                onChange={handleChangeName}
-                mb={5}
-                color="black"
-                fontSize="10pt"
-                _placeholder={{ color: "gray.500" }}
-                _hover={{
-                  bg: "white",
-                  color: "black",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                _focus={{
-                  outline: "none",
-                  bg: "white",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                bg="gray.50"
-              />
-              <Input
-                required
-                name="affixe"
-                placeholder="Affixe de l'élevage"
-                type="text"
-                value={affixe}
-                onChange={handleChangeAffixe}
-                mb={5}
-                color="black"
-                fontSize="10pt"
-                _placeholder={{ color: "gray.500" }}
-                _hover={{
-                  bg: "white",
-                  color: "black",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                _focus={{
-                  outline: "none",
-                  bg: "white",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                bg="gray.50"
-              />
-              <Select
-                placeholder="Choisir le sexe"
-                value={sexe}
-                onChange={handleChangeSexe}
-              >
-                <option value="Mâle">Mâle</option>
-                <option value="Femelle">Femelle</option>
-                <option value="Indéfini">Indéfini</option>
-              </Select>
-
-              <Input
-                required
-                name="birthday"
-                placeholder="Date de naissance"
-                type="date"
-                value={birthday}
-                onChange={handleChangeBirthday}
-                mb={5}
-                color="black"
-                fontSize="10pt"
-                _placeholder={{ color: "gray.500" }}
-                _hover={{
-                  bg: "white",
-                  color: "black",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                _focus={{
-                  outline: "none",
-                  bg: "white",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                bg="gray.50"
-              />
-              <Input
-                required
-                name="color"
-                placeholder="Couleur"
-                type="text"
-                value={color}
-                onChange={handleChangeColor}
-                mb={5}
-                color="black"
-                fontSize="10pt"
-                _placeholder={{ color: "gray.500" }}
-                _hover={{
-                  bg: "white",
-                  color: "black",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                _focus={{
-                  outline: "none",
-                  bg: "white",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                bg="gray.50"
-              />
-              <Input
-                required
-                name="eyes"
-                placeholder="Couleur des yeux"
-                type="text"
-                value={eyes}
-                onChange={handleChangeEyes}
-                mb={5}
-                color="black"
-                fontSize="10pt"
-                _placeholder={{ color: "gray.500" }}
-                _hover={{
-                  bg: "white",
-                  color: "black",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                _focus={{
-                  outline: "none",
-                  bg: "white",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                bg="gray.50"
-              />
-              <Textarea
-                required
-                name="pedigree"
-                placeholder="Pedigree"
-                type="text"
-                value={pedigree}
-                onChange={handleChangePedigree}
-                mb={5}
-                color="black"
-                fontSize="10pt"
-                _placeholder={{ color: "gray.500" }}
-                _hover={{
-                  bg: "white",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                _focus={{
-                  outline: "none",
-                  bg: "white",
-                  color: "black",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                bg="gray.50"
-              />
-            </Box>
-            <Box mt={{ base: "1rem", md: "2rem" }} zIndex={{ base: "2" }}>
-              <Input
-                required
-                name="weight"
-                placeholder="Poids"
-                type="text"
-                value={weight}
-                maxLength={15}
-                onChange={handleChangeWeight}
-                mb={4}
-                color="black"
-                fontSize="10pt"
-                _placeholder={{ color: "gray.500" }}
-                _hover={{
-                  bg: "white",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                _focus={{
-                  outline: "none",
-                  bg: "white",
-                  color: "black",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                bg="gray.50"
-              />
-
-              <Select
-                placeholder="Choisir le status"
-                value={status}
-                onChange={handleChangeStatus}
-              >
-                <option value="reproducteur">Reproducteur</option>
-                <option value="baby">Bébé</option>
-              </Select>
-
-              <Select
-                placeholder="Dispo ou réservé ?"
-                value={reservation}
-                onChange={handleChangeReservation}
-              >
-                <option value="Disponible">Disponible</option>
-                <option value="Réservé">Réservé</option>
-              </Select>
-
-              <Input
-                required
-                name="arrivalDate"
-                placeholder="Confirmer le mot de passe"
-                type="date"
-                value={arrivalDate}
-                onChange={handleChangeArrivalDate}
-                mb={5}
-                color="black"
-                fontSize="10pt"
-                _placeholder={{ color: "gray.500" }}
-                _hover={{
-                  bg: "white",
-                  color: "black",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                _focus={{
-                  outline: "none",
-                  bg: "white",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                bg="gray.50"
-              />
-              <Input
-                required
-                name="tattoo"
-                placeholder="Tatouage"
-                type="text"
-                value={tattoo}
-                onChange={handleChangeTattoo}
-                mb={5}
-                color="black"
-                fontSize="10pt"
-                _placeholder={{ color: "gray.500" }}
-                _hover={{
-                  bg: "white",
-                  color: "black",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                _focus={{
-                  outline: "none",
-                  bg: "white",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                bg="gray.50"
-              />
-              <Textarea
-                required
-                name="introduction"
-                placeholder="Présentation"
-                type="password"
-                value={introduction}
-                onChange={handleChangeIntroduction}
-                mb={5}
-                color="black"
-                fontSize="10pt"
-                _placeholder={{ color: "gray.500" }}
-                _hover={{
-                  bg: "white",
-                  color: "black",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                _focus={{
-                  outline: "none",
-                  bg: "white",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                bg="gray.50"
-              />
-              <label htmlFor="photo">
-                Picture:
-                <Input type="file" id="photo" onChange={handleChangePhoto} />
-              </label>
-            </Box>
-          </SimpleGrid>
-          <Button type="submit">Créer le lapin</Button>
-        </form>
-      </Box>
-    </Flex>
+        <AccordionPanel>
+          <Box p="1rem">
+            <form onSubmit={handleSubmit}>
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+                <Box mt={{ base: "1rem", md: "2rem" }} zIndex={{ base: "2" }}>
+                  <Input
+                    required
+                    name="name"
+                    placeholder="Nom"
+                    type="text"
+                    value={name}
+                    onChange={handleChangeName}
+                    mb={5}
+                    color="black"
+                    fontSize="10pt"
+                    _placeholder={{ color: "gray.500" }}
+                    _hover={{
+                      bg: "white",
+                      color: "black",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    _focus={{
+                      outline: "none",
+                      bg: "white",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    bg="gray.50"
+                  />
+                  <Input
+                    required
+                    name="affixe"
+                    placeholder="Affixe de l'élevage"
+                    type="text"
+                    value={affixe}
+                    onChange={handleChangeAffixe}
+                    mb={5}
+                    color="black"
+                    fontSize="10pt"
+                    _placeholder={{ color: "gray.500" }}
+                    _hover={{
+                      bg: "white",
+                      color: "black",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    _focus={{
+                      outline: "none",
+                      bg: "white",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    bg="gray.50"
+                  />
+                  <Select
+                    placeholder="Choisir le sexe"
+                    value={sexe}
+                    onChange={handleChangeSexe}
+                    backgroundColor="gray.50"
+                    mb={4}
+                  >
+                    <option value="Mâle">Mâle</option>
+                    <option value="Femelle">Femelle</option>
+                    <option value="Indéfini">Indéfini</option>
+                  </Select>
+                  Birthday
+                  <Input
+                    required
+                    name="birthday"
+                    placeholder="Date de naissance"
+                    type="date"
+                    value={birthday}
+                    onChange={handleChangeBirthday}
+                    mb={5}
+                    color="black"
+                    fontSize="10pt"
+                    _placeholder={{ color: "gray.500" }}
+                    _hover={{
+                      bg: "white",
+                      color: "black",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    _focus={{
+                      outline: "none",
+                      bg: "white",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    bg="gray.50"
+                  />
+                  <Input
+                    required
+                    name="color"
+                    placeholder="Couleur"
+                    type="text"
+                    value={color}
+                    onChange={handleChangeColor}
+                    mb={5}
+                    color="black"
+                    fontSize="10pt"
+                    _placeholder={{ color: "gray.500" }}
+                    _hover={{
+                      bg: "white",
+                      color: "black",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    _focus={{
+                      outline: "none",
+                      bg: "white",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    bg="gray.50"
+                  />
+                  <Input
+                    required
+                    name="eyes"
+                    placeholder="Couleur des yeux"
+                    type="text"
+                    value={eyes}
+                    onChange={handleChangeEyes}
+                    mb={5}
+                    color="black"
+                    fontSize="10pt"
+                    _placeholder={{ color: "gray.500" }}
+                    _hover={{
+                      bg: "white",
+                      color: "black",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    _focus={{
+                      outline: "none",
+                      bg: "white",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    bg="gray.50"
+                  />
+                  <Textarea
+                    required
+                    name="pedigree"
+                    placeholder="Pedigree"
+                    type="text"
+                    value={pedigree}
+                    onChange={handleChangePedigree}
+                    mb={5}
+                    color="black"
+                    fontSize="10pt"
+                    _placeholder={{ color: "gray.500" }}
+                    _hover={{
+                      bg: "white",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    _focus={{
+                      outline: "none",
+                      bg: "white",
+                      color: "black",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    bg="gray.50"
+                  />
+                </Box>
+                <Box mt={{ base: "1rem", md: "2rem" }} zIndex={{ base: "2" }}>
+                  <Input
+                    required
+                    name="weight"
+                    placeholder="Poids"
+                    type="text"
+                    value={weight}
+                    maxLength={15}
+                    onChange={handleChangeWeight}
+                    mb={4}
+                    color="black"
+                    fontSize="10pt"
+                    _placeholder={{ color: "gray.500" }}
+                    _hover={{
+                      bg: "white",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    _focus={{
+                      outline: "none",
+                      bg: "white",
+                      color: "black",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    bg="gray.50"
+                  />
+                  <Select
+                    placeholder="Choisir le status"
+                    value={status}
+                    onChange={handleChangeStatus}
+                    backgroundColor="gray.50"
+                    mb={5}
+                  >
+                    <option value="reproducteur">Reproducteur</option>
+                    <option value="baby">Bébé</option>
+                  </Select>
+                  <Select
+                    placeholder="Dispo ou réservé ?"
+                    value={reservation}
+                    onChange={handleChangeReservation}
+                    backgroundColor="gray.50"
+                    mb={4}
+                  >
+                    <option value="Disponible">Disponible</option>
+                    <option value="Réservé">Réservé</option>
+                  </Select>
+                  Date d'arrivée
+                  <Input
+                    required
+                    name="arrivalDate"
+                    placeholder="Confirmer le mot de passe"
+                    type="date"
+                    value={arrivalDate}
+                    onChange={handleChangeArrivalDate}
+                    mb={5}
+                    color="black"
+                    fontSize="10pt"
+                    _placeholder={{ color: "gray.500" }}
+                    _hover={{
+                      bg: "white",
+                      color: "black",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    _focus={{
+                      outline: "none",
+                      bg: "white",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    bg="gray.50"
+                  />
+                  <Input
+                    required
+                    name="tattoo"
+                    placeholder="Tatouage"
+                    type="text"
+                    value={tattoo}
+                    onChange={handleChangeTattoo}
+                    mb={5}
+                    color="black"
+                    fontSize="10pt"
+                    _placeholder={{ color: "gray.500" }}
+                    _hover={{
+                      bg: "white",
+                      color: "black",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    _focus={{
+                      outline: "none",
+                      bg: "white",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    bg="gray.50"
+                  />
+                  <Textarea
+                    required
+                    name="introduction"
+                    placeholder="Présentation"
+                    type="password"
+                    value={introduction}
+                    onChange={handleChangeIntroduction}
+                    mb={5}
+                    color="black"
+                    fontSize="10pt"
+                    _placeholder={{ color: "gray.500" }}
+                    _hover={{
+                      bg: "white",
+                      color: "black",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    _focus={{
+                      outline: "none",
+                      bg: "white",
+                      border: "1px solid",
+                      borderColor: "blue.500",
+                    }}
+                    bg="gray.50"
+                  />
+                  <label htmlFor="photo">
+                    <Input
+                      type="file"
+                      id="photo"
+                      onChange={handleChangePhoto}
+                    />
+                  </label>
+                </Box>
+              </SimpleGrid>
+              <Button type="submit" bg="#50908f" color="white">
+                Créer le lapin
+              </Button>
+            </form>
+          </Box>
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
   );
 }
