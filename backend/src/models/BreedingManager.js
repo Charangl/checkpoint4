@@ -7,14 +7,16 @@ class BreedingManager extends AbstractManager {
 
   insert(breeding) {
     return this.database.query(
-      `insert into ${this.table} (name, street, zip_code, city, phone, introduction, photo, email, user_id ) values (?,?,?,?,?,?,?,?,?)`,
+      `insert into ${this.table} (breeder, name, street, zip_code, city, phone, introduction, engagement, photo, email, user_id ) values (?,?,?,?,?,?,?,?,?,?,?)`,
       [
+        breeding.breeder,
         breeding.name,
         breeding.street,
         breeding.zip_code,
         breeding.city,
         breeding.phone,
         breeding.introduction,
+        breeding.engagement,
         breeding.photo,
         breeding.email,
         breeding.user_id,
@@ -31,14 +33,14 @@ class BreedingManager extends AbstractManager {
 
   find(id) {
     return this.database.query(
-      `select id, name, street, zip_code, city, phone, introduction, photo, email, user_id from  ${this.table} where id = ?`,
+      `select id, breeder, name, street, zip_code, city, phone, introduction, engagement, photo, email, user_id from  ${this.table} where id = ?`,
       [id]
     );
   }
 
   findAll() {
     return this.database.query(
-      `select id, name, street, zip_code, city, phone, introduction, photo, email, user_id from  ${this.table}`
+      `select id, breeder, name, street, zip_code, city, phone, introduction, engagement, photo, email, user_id from  ${this.table}`
     );
   }
 }

@@ -99,7 +99,7 @@ export default function Writing({ id, title, article, image }) {
             mr="1.2rem"
             mb="0.3rem"
           />
-          <Text>{article.slice(-400)}</Text>
+          <Text>{article ? article.slice(-400) : ""}</Text>
           <Link to={`/writings/${id}`}>
             <Text color="#50908f" fontSize="xs" textAlign="right">
               ... lire la suite

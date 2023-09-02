@@ -84,10 +84,29 @@ const destroy = (req, res) => {
     });
 };
 
+const addComment = (req, res) => {
+  const writing = req.body; // Les données du commentaire envoyées depuis le frontend
+
+  // Vous pouvez effectuer des validations sur commentData ici, par exemple, vérifier si le commentaire est valide.
+
+  // Ensuite, insérez le commentaire dans la base de données.
+  models.writing
+    .insert(writing) // Utilisez le modèle de commentaire approprié de votre application
+    .then(([result]) => {
+      const insertedId = result.insertId;
+      res.status(201).json({ id: insertedId });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  addComment,
 };
