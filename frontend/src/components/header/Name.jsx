@@ -34,7 +34,7 @@ export default function Name() {
         bg="transparent"
         mt={{ base: "2rem", md: "0" }}
       >
-        Des petits coeurs d'amour
+        Les petits coeurs d'amour
       </Heading>
     </Box>
   );

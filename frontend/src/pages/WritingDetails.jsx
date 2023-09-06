@@ -1,10 +1,11 @@
 import { Box, Image, Text, Heading } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import HTMLReactParser from "html-react-parser";
 
 import DeleteWriting from "../components/article/DeleteArticle";
 import EditArticle from "../components/article/EditArticle";
-// import AddComment from "../components/user/AddComment";
+import AddComment from "../components/user/AddComment";
 
 export default function WritingDetails() {
   const [writing, setWriting] = useState(null);
@@ -84,6 +85,7 @@ export default function WritingDetails() {
             alt={writing.title}
             borderRadius="lg"
             boxSize="30%"
+            maxH="400px"
             objectFit="cover"
             float="left"
             mr="1.2rem"
@@ -91,14 +93,14 @@ export default function WritingDetails() {
           />
         </Box>
         <Box minH="25rem">
-          <Text>{writing.article}</Text>
+          <Text>{HTMLReactParser(writing.article)}</Text>
           <Box display="flex" justifyContent="right" mt="2rem">
             <EditArticle />
             <DeleteWriting />
           </Box>
         </Box>
       </Box>
-      {/* <AddComment /> */}
+      <AddComment />
     </Box>
   );
 }

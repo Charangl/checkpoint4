@@ -16,7 +16,12 @@ export default function WritingList() {
   }, []);
 
   return (
-    <Flex flexWrap="wrap" ml={{ base: "0rem", md: "5rem" }} mr={{ md: "5rem" }}>
+    <Flex
+      flexWrap="wrap"
+      ml={{ base: "0rem", md: "5rem" }}
+      mr={{ md: "5rem" }}
+      mt="-1rem"
+    >
       {writings.map((writing) => (
         <Writing {...writing} key={`writing-${writing.id}`} />
       ))}

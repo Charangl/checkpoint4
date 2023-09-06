@@ -7,16 +7,17 @@ import {
   Heading,
   Input,
   Button,
-  Textarea,
   useToast,
   Text,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import JoditEditor from "jodit-react";
 
 const imageTypes = ["image/jpeg", "image/jpg", "image/png"];
 
 export default function CreateArticle() {
+  const editor = useRef(null);
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [article, setArticle] = useState("");
@@ -27,8 +28,8 @@ export default function CreateArticle() {
     setTitle(e.target.value);
   };
 
-  const handleChangeArticle = (e) => {
-    setArticle(e.target.value);
+  const handleChangeArticle = (value) => {
+    setArticle(value);
   };
 
   const handleChangeImage = (e) => {
@@ -145,30 +146,10 @@ export default function CreateArticle() {
                 bg="gray.50"
               />
 
-              <Textarea
-                required
-                name="article"
-                placeholder="Ecrire l'article"
-                type="text"
+              <JoditEditor
+                ref={editor}
                 value={article}
                 onChange={handleChangeArticle}
-                mb={5}
-                color="black"
-                fontSize="10pt"
-                _placeholder={{ color: "gray.500" }}
-                _hover={{
-                  bg: "white",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                _focus={{
-                  outline: "none",
-                  bg: "white",
-                  color: "black",
-                  border: "1px solid",
-                  borderColor: "blue.500",
-                }}
-                bg="gray.50"
               />
 
               <label
@@ -180,6 +161,7 @@ export default function CreateArticle() {
                   type="file"
                   id="image"
                   onChange={handleChangeImage}
+                  my="1rem"
                 />
               </label>
 
