@@ -109,6 +109,33 @@ INSERT INTO `writing` VALUES (1,'Coupe spéciale été', '...', 'Lorem ipsum dol
 UNLOCK TABLES;
 
 --
+-- Table structure for table `review`
+--
+
+DROP TABLE IF EXISTS `review`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `review` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `comment` text DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `rabbit_id` int DEFAULT NULL,
+  `writing_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `review`
+--
+
+LOCK TABLES `review` WRITE;
+/*!40000 ALTER TABLE `review` DISABLE KEYS */;
+INSERT INTO `review` (`id`, `comment`, `user_id`, `writing_id`) VALUES (1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1, 1);
+/*!40000 ALTER TABLE `review` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `breeding`
 --
 

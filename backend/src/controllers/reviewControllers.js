@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.writing
+  models.review
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,7 +13,7 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.writing
+  models.review
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const writing = req.body;
+  const review = req.body;
 
   // TODO validations (length, format...)
 
-  writing.id = parseInt(req.params.id, 10);
+  review.id = parseInt(req.params.id, 10);
 
-  models.writing
-    .update(writing)
+  models.review
+    .update(review)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -51,12 +51,12 @@ const edit = (req, res) => {
 };
 
 const add = (req, res, next) => {
-  const writing = req.body;
+  const review = req.body;
 
   // TODO validations (length, format...)
 
-  models.writing
-    .insert(writing)
+  models.review
+    .insert(review)
     .then(([result]) => {
       const insertedId = result.insertId;
       res.status(201).json({ id: insertedId });
@@ -69,7 +69,7 @@ const add = (req, res, next) => {
 };
 
 const destroy = (req, res) => {
-  models.writing
+  models.review
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -84,10 +84,28 @@ const destroy = (req, res) => {
     });
 };
 
+const allCommentByArticle = (req, res) => {
+  models.comment
+    .findAllComment(req.params.id)
+    .then(([rows]) => {
+      // console.log("Find all Fav result:", rows);
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  allCommentByArticle,
 };
