@@ -149,7 +149,7 @@ export default function CreateArticle() {
               <JoditEditor
                 ref={editor}
                 value={article}
-                onChange={handleChangeArticle}
+                onBlur={handleChangeArticle}
               />
 
               <label

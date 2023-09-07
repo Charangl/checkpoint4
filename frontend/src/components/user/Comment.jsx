@@ -1,15 +1,9 @@
 import React from "react";
 import { Box, Heading, Text } from "@chakra-ui/react";
 import PropTypes from "prop-types";
-import { useParams } from "react-router-dom";
-import { useUserContext } from "../../contexts/UserContext";
 import DeleteReview from "./DeleteComment";
 
-export default function Review(props) {
-  const [{ user }] = useUserContext();
-  const { id } = useParams();
-  const { comment, writing_id: writingId } = props; // Utiliser writing_id dans les props
-
+export default function Review({ comment, pseudo }) {
   return (
     <Box
       bg="#f0e6e6"
@@ -22,7 +16,8 @@ export default function Review(props) {
       mx="auto"
     >
       <Box display="flex" justifyContent="space-between">
-        <Heading fontSize="md">{user.pseudo}</Heading> <DeleteReview id={id} />
+        <Heading fontSize="md">{pseudo}</Heading>
+        <DeleteReview />
       </Box>
       <Text
         overflow="scroll"
@@ -33,7 +28,6 @@ export default function Review(props) {
         }}
       >
         {comment}
-        {writingId} {/* Utiliser writingId ici */}
       </Text>
     </Box>
   );
@@ -41,5 +35,5 @@ export default function Review(props) {
 
 Review.propTypes = {
   comment: PropTypes.string.isRequired,
-  writing_id: PropTypes.string.isRequired, // Utiliser writing_id dans les propTypes
+  pseudo: PropTypes.string.isRequired,
 };

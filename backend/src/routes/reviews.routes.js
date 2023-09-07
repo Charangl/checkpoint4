@@ -3,8 +3,7 @@ const reviewControllers = require("../controllers/reviewControllers");
 
 router.get("/", reviewControllers.browse);
 router.get("/:id", reviewControllers.read);
-router.post("/", reviewControllers.add);
-
+router.post("/", reviewControllers.add, reviewControllers.read);
 router.put("/:id", reviewControllers.edit);
 router.delete("/:id", reviewControllers.destroy);
 

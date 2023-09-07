@@ -38,7 +38,8 @@ export default function AddComment() {
     } else {
       const commentData = {
         comment,
-        writing_id: id, // Utilisation de l'ID de l'article extrait de l'URL
+        writing_id: id,
+        user_id: user.id, // Utilisation de l'ID de l'article extrait de l'URL
       };
 
       // Envoyer le commentaire vers l'URL appropriée
