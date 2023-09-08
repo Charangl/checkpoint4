@@ -15,7 +15,7 @@ import ReviewList from "./CommentListWriting";
 export default function AddComment() {
   const navigate = useNavigate();
   const [comment, setComment] = useState("");
-  const [{ user }] = useUserContext();
+  const [{ user }] = useUserContext(); // Utilisation du contexte utilisateur pour obtenir les données de l'utilisateur connecté
   const toast = useToast();
   const { id } = useParams();
 
@@ -69,63 +69,63 @@ export default function AddComment() {
     }
   };
 
-  if (user && (user.role === "user" || user.role === "admin")) {
-    return (
-      <Flex p="2rem" flexDir="column" w="90%" mt="2rem" mx="auto">
-        <Heading
-          fontSize="1.2rem"
-          fontFamily="Playfair Display"
-          textTransform="uppercase"
-          letterSpacing="0.1rem"
-          mt="1rem"
-        >
-          Ajouter un commentaire
-        </Heading>
-        <Text>{user.pseudo}</Text>
-        <form onSubmit={handleSubmit}>
-          <Box mt={{ base: "1rem", md: "2rem" }} zIndex={{ base: "2" }}>
-            <Textarea
-              required
-              name="comment"
-              placeholder="Écrire votre commentaire"
-              type="text"
-              value={comment}
-              maxLength={100}
-              onChange={handleChangeComment}
-              mb={5}
-              color="black"
-              fontSize="10pt"
-              _placeholder={{ color: "gray.500" }}
-              _hover={{
-                bg: "white",
-                color: "black",
-                border: "1px solid",
-                borderColor: "blue.500",
-              }}
-              _focus={{
-                outline: "none",
-                bg: "white",
-                border: "1px solid",
-                borderColor: "blue.500",
-              }}
-              bg="gray.50"
-            />
-          </Box>
-          <Button type="submit" bg="#50908f" color="white">
-            Envoyer
-          </Button>
-        </form>
-        <Box mt="2rem">
-          <ReviewList articleId={id} /> {/* Passer l'ID ici */}
-        </Box>
-      </Flex>
-    );
-  }
-
   return (
     <Flex p="2rem" flexDir="column" w="90%" mt="2rem" mx="auto">
-      <Box p="1rem">
-        <Text>Il faut être connecté pour commenter.</Text>
+      <Heading
+        fontSize="1.2rem"
+        fontFamily="Playfair Display"
+        textTransform="uppercase"
+        letterSpacing="0.1rem"
+        mt="1rem"
+      >
+        Ajouter un commentaire
+      </Heading>
+      {user && (user.role === "user" || user.role === "admin") ? (
+        // Si l'utilisateur est connecté en tant qu'utilisateur ou administrateur, affichez le formulaire de commentaire
+        <>
+          <Text>{user.pseudo}</Text>
+          <form onSubmit={handleSubmit}>
+            <Box mt={{ base: "1rem", md: "2rem" }} zIndex={{ base: "2" }}>
+              <Textarea
+                required
+                name="comment"
+                placeholder="Écrire votre commentaire"
+                type="text"
+                value={comment}
+                maxLength={100}
+                onChange={handleChangeComment}
+                mb={5}
+                color="black"
+                fontSize="10pt"
+                _placeholder={{ color: "gray.500" }}
+                _hover={{
+                  bg: "white",
+                  color: "black",
+                  border: "1px solid",
+                  borderColor: "blue.500",
+                }}
+                _focus={{
+                  outline: "none",
+                  bg: "white",
+                  border: "1px solid",
+                  borderColor: "blue.500",
+                }}
+                bg="gray.50"
+              />
+            </Box>
+            <Button type="submit" bg="#50908f" color="white">
+              Envoyer
+            </Button>
+          </form>
+        </>
+      ) : (
+        // Si l'utilisateur n'est pas connecté, affichez un message
+        <Box p="1rem">
+          <Text>Il faut être connecté pour commenter.</Text>
+        </Box>
+      )}
+      <Box mt="2rem">
+        <ReviewList articleId={id} />
       </Box>
     </Flex>
   );

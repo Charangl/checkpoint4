@@ -28,7 +28,7 @@ export default function DeleteRabbit() {
     })
       .then(() => {
         onClose();
-        navigate("/gestion");
+        navigate("/repro");
       })
       .catch((err) => console.error(err));
   };

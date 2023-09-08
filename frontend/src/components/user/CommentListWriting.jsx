@@ -66,7 +66,7 @@ export default function ReviewList() {
   return (
     <Flex flexWrap="wrap" gap="5">
       {commentsWithUsers.map((review) => (
-        <Review {...review} key={`review-${review.id}`} />
+        <Review {...review} commentId={review.id} key={`review-${review.id}`} />
       ))}
     </Flex>
   );

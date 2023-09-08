@@ -25,11 +25,25 @@ export default function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Expression régulière pour vérifier le mot de passe
+    const passwordRegex =
+      /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\-]).{8,}$/;
+
     if (!pseudo || !email || !password) {
       toast({
         title: "Champs",
         description: "Vous devez remplir tous les champs !",
         status: "warning",
+        duration: 3000,
+        isClosable: true,
+        position: "bottom-right",
+      });
+    } else if (!passwordRegex.test(password)) {
+      toast({
+        title: "Mot de passe",
+        description:
+          "Le mot de passe doit contenir au moins une majuscule, un caractère spécial et avoir une longueur minimale de 8 caractères.",
+        status: "error",
         duration: 3000,
         isClosable: true,
         position: "bottom-right",

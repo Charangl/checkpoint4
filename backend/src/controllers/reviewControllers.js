@@ -60,11 +60,13 @@ const add = (req, res, next) => {
     .then(([result]) => {
       const insertedId = result.insertId;
       res.status(201).json({ id: insertedId });
-      next();
     })
     .catch((err) => {
       console.error(err);
       res.sendStatus(500);
+    })
+    .finally(() => {
+      next(); // Appeler next() pour passer à la prochaine étape du middleware
     });
 };
 

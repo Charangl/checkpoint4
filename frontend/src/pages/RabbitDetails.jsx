@@ -1,6 +1,6 @@
-import { Box, Image, Text, Heading } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Box, Image, Text, Heading } from "@chakra-ui/react";
 import DeleteRabbit from "../components/rabbit/DeleteRabbit";
 import EditRabbit from "../components/rabbit/EditRabbit";
 import { convertDateFormat } from "../services/convertTime";
@@ -21,6 +21,10 @@ export default function RabbitDetails() {
     getOneRabbit();
   }, [id]);
 
+  const refreshRabbitData = () => {
+    getOneRabbit();
+  };
+
   if (!rabbit) {
     return <p>Chargement du lapin...</p>;
   }
@@ -33,6 +37,7 @@ export default function RabbitDetails() {
       p="2rem 2rem 0.1rem 2rem"
       flexDir="column"
       w="78.5%"
+      minH="23rem"
       mt={{ base: "2rem", md: "5rem" }}
       mx="auto"
     >
@@ -91,8 +96,8 @@ export default function RabbitDetails() {
         <Text>
           Présentation : <span>{rabbit.introduction}</span>
         </Text>
-        <Box display="flex" justifyContent="right" mt="2rem">
-          <EditRabbit />
+        <Box display="flex" justifyContent="flex-end" mt="2rem">
+          <EditRabbit refreshRabbitData={refreshRabbitData} />
           <DeleteRabbit />
         </Box>
       </Box>
