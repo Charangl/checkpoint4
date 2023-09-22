@@ -1,12 +1,13 @@
-import { useRef, useEffect } from "react";
-
+import React, { useRef, useEffect, useState } from "react";
 import { Box, Image, Heading, Text } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import "../App.css";
+import HTMLReactParser from "html-react-parser";
+import "../../App.css";
 
 export default function Writing({ id, title, article, image }) {
   const headingRef = useRef(null);
+  const [parsedArticle, setParsedArticle] = useState(null);
 
   useEffect(() => {
     const adjustPseudoElements = () => {
@@ -35,6 +36,11 @@ export default function Writing({ id, title, article, image }) {
       window.removeEventListener("resize", adjustPseudoElements);
     };
   }, [title]);
+
+  useEffect(() => {
+    setParsedArticle(HTMLReactParser(article));
+  }, [article]);
+
   return (
     <Box
       bg="#f0e6e6"
@@ -93,13 +99,19 @@ export default function Writing({ id, title, article, image }) {
             src={`${import.meta.env.VITE_BACKEND_URL}/assets/images/${image}`}
             alt={title}
             borderRadius="lg"
-            boxSize="35%"
+            boxSize="25%"
             objectFit="cover"
+            maxH="200px"
             float="left"
             mr="1.2rem"
             mb="0.3rem"
           />
-          <Text>{article}</Text>
+          <Text>{parsedArticle}</Text>
+          <Link to={`/writings/${id}`}>
+            <Text color="#50908f" fontSize="xs" textAlign="right">
+              ... lire la suite
+            </Text>
+          </Link>
         </Box>
       </Box>
     </Box>
@@ -114,6 +126,5 @@ Writing.propTypes = {
 };
 
 Writing.defaultProps = {
-  image:
-    "https://www.cgspectrum.com/hs-fs/hubfs/CGSpectrum_November2019%20Theme/images/Grand-Theft-Auto-V-600x338.jpg?width=600&height=338&name=Grand-Theft-Auto-V-600x338.jpg",
+  image: null,
 };

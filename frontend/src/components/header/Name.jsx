@@ -1,7 +1,7 @@
 import { Box, Heading, Image, Text } from "@chakra-ui/react";
 import React, { useContext } from "react";
-import imageHeader from "../assets/imageHeader.png";
-import UserContext from "../contexts/UserContext";
+import imageHeader from "../../assets/imageHeader.png";
+import UserContext from "../../contexts/UserContext";
 
 export default function Name() {
   const [{ user }] = useContext(UserContext);
@@ -34,7 +34,7 @@ export default function Name() {
         bg="transparent"
         mt={{ base: "2rem", md: "0" }}
       >
-        Des petits coeurs d'amour
+        Les petits coeurs d'amour
       </Heading>
     </Box>
   );

@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
-import Rabbit from "../components/Rabbit";
+import Rabbit from "../components/rabbit/Rabbit";
 
 export default function RabbitListRepro() {
   const [rabbits, setRabbits] = useState([]);

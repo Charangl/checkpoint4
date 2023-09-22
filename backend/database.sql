@@ -91,8 +91,8 @@ CREATE TABLE `writing` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `comment` text DEFAULT NULL,
-  `article` longtext NOT NULL,
-  `image` varchar(255) NOT NULL,
+  `article` longtext DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `user_id` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -109,6 +109,33 @@ INSERT INTO `writing` VALUES (1,'Coupe spéciale été', '...', 'Lorem ipsum dol
 UNLOCK TABLES;
 
 --
+-- Table structure for table `review`
+--
+
+DROP TABLE IF EXISTS `review`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `review` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `comment` text DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `rabbit_id` int DEFAULT NULL,
+  `writing_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `review`
+--
+
+LOCK TABLES `review` WRITE;
+/*!40000 ALTER TABLE `review` DISABLE KEYS */;
+INSERT INTO `review` (`id`, `comment`, `user_id`, `writing_id`) VALUES (1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1, 1);
+/*!40000 ALTER TABLE `review` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `breeding`
 --
 
@@ -117,12 +144,14 @@ DROP TABLE IF EXISTS `breeding`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `breeding` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `breeder` text DEFAULT NULL,
   `name` varchar(100) NOT NULL,
   `street` varchar(255) NOT NULL,
   `zip_code` int NOT NULL,
   `city` varchar(255) NOT NULL,
   `phone` varchar(10) NOT NULL,
   `introduction` text DEFAULT NULL,
+  `engagement` text DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `user_id` int DEFAULT NULL,
@@ -136,7 +165,7 @@ CREATE TABLE `breeding` (
 
 LOCK TABLES `breeding` WRITE;
 /*!40000 ALTER TABLE `breeding` DISABLE KEYS */;
-INSERT INTO `breeding` VALUES (1,'Des petits coeurs d amour', '2 rue les usages', 28030, 'Beauche', '0669024524', '...', '...', 'petits_coeurs@example.com', 1 );
+INSERT INTO `breeding` VALUES (1,'Petite présentation de l éleveuse, sa passion pour les lapins et précisemment pour les angoras.', 'Des petits coeurs d amour', '2 rue les usages', 28030, 'Beauche', '0669024524', 'présentation de l élevage, ce qu il faut savoir.','Mes engagements bla bla bla', '...', 'petits_coeurs@example.com', 1 );
 /*!40000 ALTER TABLE `breeding` ENABLE KEYS */;
 UNLOCK TABLES;
 

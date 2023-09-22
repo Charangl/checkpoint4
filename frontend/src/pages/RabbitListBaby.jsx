@@ -1,6 +1,6 @@
 import { Flex, Switch, Box, Text } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
-import Rabbit from "../components/Rabbit";
+import Rabbit from "../components/rabbit/Rabbit";
 
 export default function RabbitListBaby() {
   const [rabbits, setRabbits] = useState([]);
@@ -19,7 +19,6 @@ export default function RabbitListBaby() {
 
   const babyRabbits = rabbits.filter((rabbit) => rabbit.status === "baby");
 
-  // Filtrer les lapins selon les options sélectionnées
   const filteredRabbits = babyRabbits.filter((rabbit) => {
     const isReservedMatch = showReserved && rabbit.reservation === "Réservé";
     const isAvailableMatch =
